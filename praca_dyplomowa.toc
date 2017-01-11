@@ -1,0 +1,13 @@
+\select@language {polish}
+\contentsline {chapter}{\numberline {1}Wst\IeC {\k e}p}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}HTTP/2.0}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Server Push}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Prioretyzacja}{3}{section.2.2}
+\contentsline {section}{\numberline {2.3}Multiplexing}{3}{section.2.3}
+\contentsline {section}{\numberline {2.4}Protok\IeC {\'o}\IeC {\l } binarny}{5}{section.2.4}
+\contentsline {section}{\numberline {2.5}Pipelining}{5}{section.2.5}
+\contentsline {section}{\numberline {2.6}Kompresja danych}{5}{section.2.6}
+\contentsline {section}{\numberline {2.7}Steganografia w obiektach multimedialnych}{5}{section.2.7}
+\contentsline {chapter}{\numberline {3}Wnioski}{6}{chapter.3}
+\contentsline {chapter}{\numberline {A}Por\IeC {\'o}wnanie numer\IeC {\'o}w ISN j\IeC {\k a}dra Linux i modu\IeC {\l }u Shushi}{9}{appendix.A}
+\contentsline {chapter}{Bibliografia}{12}{appendix*.4}

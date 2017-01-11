@@ -1,0 +1,187 @@
+% prmag2017.sty  October 8th, 2017    IETiSIP PW  Thesis style
+%
+% Written by J. Starzy\'nski (jstar@iem.pw.edu.pl) 
+% revised Oct. 8th, 2016
+
+\typeout{Package `prmag2017' (ZETiIS PW Thesis) ver. 0.1 (Oct 2016)}
+
+\def\nrindeksu#1{\gdef\@nrindeksu{#1}}
+\gdef\@nrindeksu{{\bf BRAK POLECENIA{\tt \(\backslash\)nrindeksu} !}}
+
+\def\authorII#1{\gdef\@authorII{#1}}
+\def\nrindeksuII#1{\gdef\@nrindeksuII{#1}}
+
+\def\opiekun#1{\gdef\@opiekun{#1}}
+\def\konsultant#1{\gdef\@konsultant{#1}}
+\def\terminwykonania#1{\gdef\@terminwykonania{#1}}
+\def\datawydaniatematu#1{\gdef\@datawydaniatematu{#1}}
+
+\def\miasto#1{\gdef\@miasto{#1}}
+\def\uczelnia#1{\gdef\@uczelnia{#1}}
+\def\wydzial#1{\gdef\@wydzial{#1}}
+\def\instytut#1{\gdef\@instytut{#1}}
+\def\zaklad#1{\gdef\@zaklad{#1}}
+\def\rodzajpracy#1{\gdef\@rodzajpracy{#1}}
+\def\rok#1{\gdef\@rok{#1}}
+\def\kierunekstudiow#1{\gdef\@kierunekstudiow{#1}}
+\def\specjalnosc#1{\gdef\@specjalnosc{#1}}
+\def\podziekowania#1{\gdef\@podziekowania{#1}}
+\long\def\opinie#1{\gdef\@opinie{#1}}
+\long\def\oswiadczenie#1{\gdef\@oswiadczenie{#1}}
+\long\def\streszczenia#1{\gdef\@streszczenia{#1}}
+
+\gdef\@miasto{Warszawa}
+\gdef\@uczelnia{POLITECHNIKA WARSZAWSKA}
+\gdef\@wydzial{WYDZIAŁ ELEKTRYCZNY}
+\gdef\@instytut{Instytut Elektrotechniki Teoretycznej\linebreak[1] i~Systemów Informacyjno-Pomiarowych}
+\gdef\@zaklad{Zakład Elektrotechniki Teoretycznej\linebreak[1] i~Informatyki Stosowanej}
+\gdef\@rodzajpracy{MAGISTERSKA}
+\gdef\@kierunekstudiow{Informatyka}
+\gdef\@specjalnosc{Inżynieria oprogramowania}
+\gdef\@opiekun{{\Large\bf BŁĄD: BRAK POLECENIA {\tt \(\backslash\)opiekun} !}}
+\gdef\@terminwykonania{{\Large\bf BŁĄD: BRAK POLECENIA {\tt \(\backslash\)terminwykonania} !}}
+\gdef\@rok{{\Large\bf BŁĄD: BRAK POLECENIA {\tt \(\backslash\)rok} !}}
+\gdef\@streszczenia{\newpage \hphantom. \vfill {\Large\bf BŁĄD: BRAK POLECENIA {\tt \(\backslash\)streszczenia} !} \vfill }
+
+\def\maketitle{\par
+  \ps@empty
+  \hypersetup{pageanchor=false}
+ \begingroup
+ \def\thefootnote{\fnsymbol{footnote}}
+ \def\@makefnmark{\hbox
+ to 0pt{$^{\@thefnmark}$\hss}}
+ \if@twocolumn
+ \twocolumn[\@maketitle]
+ \else \newpage
+ \global\@topnum\z@ \@maketitle \fi\thispagestyle{empty}\@thanks
+ \endgroup
+  \@streszczenia
+\cleardoublepage
+ \@oswiadczenie
+\cleardoublepage
+   \setcounter{page}{1}
+   \pagenumbering{roman}
+   \tableofcontents
+   %\thispagestyle{empty}
+ \newpage
+ \if@twocolumn
+   \relax
+ \else
+%   \newpage
+%   \null
+%   \vfill
+%   \centerline{\tiny Ta strona specjalnie jest pusta.}
+%   \vfill
+%   \thispagestyle{empty}
+ \fi
+ % Dodanie podziekowania
+ \@ifundefined{@podziekowania}{\relax}{%
+ \@podziekowania
+ \newpage}
+  % strona tutulowa
+ \cleardoublepage
+  \setcounter{page}{1}
+ \setcounter{footnote}{0}
+ \hypersetup{pageanchor=true}
+ \pagenumbering{arabic}
+ \let\maketitle\relax
+ \let\@maketitle\relax
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+%%% Title page - a masterpiece of typesetting
+\def\@maketitle{\newpage
+  {\fontfamily{phv}\selectfont
+  \noindent
+  {\fontsize{18}{21.6}\fontseries{mc}\selectfont%
+  \begin{tabular}{c|ll}
+   \multirow{2}{*}{\includegraphics[height=35pt]{logoPW.pdf}} & \multirow{2}{70pt}{\includegraphics[height=35pt]{logoWE.pdf}}
+                                                               & \fontsize{22}{26.4}\fontseries{mc}\selectfont\@uczelnia \\ 
+                                                             & & \fontsize{18}{21.6}\fontseries{mc}\selectfont\@wydzial \\ 
+  \end{tabular}
+  \par\vskip20pt} 
+  
+    \vfill
+   
+ \begin{center}
+ {\fontsize{12}{13.4}\selectfont\@instytut\\ \@zaklad\par}
+ 
+   \vfill
+
+ {\fontsize{43}{44}\fontseries{mc}\selectfont PRACA DYPLOMOWA \\
+ \@rodzajpracy \par\vskip10pt}
+
+ 
+ {\fontsize{12}{13.4}\selectfont na kierunku \@kierunekstudiow\\
+  w specjalności: \@specjalnosc}
+  
+  \vfill
+ 
+  {\fontsize{14}{17}\selectfont \@title \par}
+  
+    \vfill
+  
+  {\lineskip .5em
+   \begin{tabular}[t]{ccc}
+   \fontsize{21}{25}\selectfont \@author  \@ifundefined{@authorII}{\relax}{&\ & \fontsize{21}{25}\selectfont \@authorII} \\
+   nr albumu \@nrindeksu  \@ifundefined{@nrindeksuII}{\relax}{&\ & nr albumu \@nrindeksuII}
+  \end{tabular}\bigskip\par}
+  
+    \vskip20pt
+
+  \@ifundefined{@opiekun}{\relax}{promotor\\ \@opiekun\par\vskip5pt}
+  \@ifundefined{@konsultant}{\relax}{konsultant \\\@konsultant\par}
+
+  \vfill
+  
+ \@miasto, \@rok
+ \end{center}
+ }
+}
+
+\long\def\@oswiadczenie{
+\cleardoublepage
+{\raggedleft
+Warszawa, \@terminwykonania
+
+}
+
+
+\noindent
+\@uczelnia\\
+\@wydzial
+
+\bigskip
+
+\centerline{\bf OŚWIADCZENIE}
+\bigskip
+
+Świadom\@ifundefined{@authorII}{\relax}{i} odpowiedzialności prawnej oświadczam\@ifundefined{@authorII}{\relax}{y}, że niniejsza praca dyplomowa \MakeLowercase{\@rodzajpracy}\ pt. 
+\@title:
+\begin{itemize}
+\item została napisana przez\@ifundefined{@authorII}{e mnie}{ nas} samodzielnie, 
+\item nie narusza niczyich praw autorskich,
+\item nie zawiera treści uzyskanych w sposób niezgodny z obowiązującymi przepisami.
+\end{itemize}
+Oświadczam\@ifundefined{@authorII}{\relax}{y}, że przedłożona do obrony praca dyplomowa nie była wcześniej podstawą postępowania związanego z uzyskaniem dyplomu lub tytułu zawodowego w uczelni wyższej.
+\@ifundefined{@authorII}{Jestem świadom}{Jesteśmy świadomi}, że praca zawiera również rezultaty stanowiące własności intelektualne Politechniki Warszawskiej, które nie mogą być udostępniane innym osobom 
+i instytucjom bez zgody Władz Wydziału Elektrycznego.
+
+Oświadczam\@ifundefined{@authorII}{\relax}{y} ponadto, że niniejsza wersja pracy jest identyczna z załączoną wersją elektroniczną.
+
+\vskip5mm
+{\raggedleft
+
+\noindent
+\@author ..................................\kern1cm\\
+
+\bigskip
+\@ifundefined{@authorII}{\relax}{\noindent\@authorII ..................................\kern1cm}
+\thispagestyle{empty}
+
+}
+\cleardoublepage
+\ps@plain
+}
+
+\def\zakonczenie{%
+ \@ifundefined{@opinie}{\relax}{\cleardoublepage\ps@empty\@opinie}%
+}
