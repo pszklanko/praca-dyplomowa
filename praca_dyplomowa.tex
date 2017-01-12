@@ -118,7 +118,7 @@ Zdecydowałem się na to rozwiązanie z kilku powodów:
 %-----------------
 % HTTP/2.0
 %-----------------
-\chapter{HTTP/2.0}
+\chapter{HTTP/2}
 
 \section{Historia}
 
@@ -126,18 +126,41 @@ Pracę nad zmianami w protokole zapoczątkowała w 2009 roku firma Google ze swo
 Zdecydowali się oni na stworzenie protokołu, który miał usprawnić działanie aplikacji oraz stron internetowych rozwiązując ograniczenia nałożone przez HTTP/1.1.
 Z biegiem czasu coraz więcej przeglądarek oraz stron internetowych, zarówno tych dużych jak i tych małych, zaczęło wspierać SPDY, co zainteresowało osoby pracujące nad protokołem HTTP.
 Zdecydowali się oni wykorzystać dokumentację protokołu SPDY jako początek prac nad własnym protokołem -- HTTP/2.
-Od tego momentu aż do roku 2015, kiedy to standard HTTP/2 został oficjalnie zaakceptowany (\TODO odnośnik RFC 7540 i może 7541), projekty były rozwijane równolegle.
+Od tego momentu aż do roku 2015, kiedy to standard HTTP/2 został oficjalnie zaakceptowany 
+(\TODO odnośnik RFC 7540 i może 7541), projekty były rozwijane równolegle.
 SPDY było wykorzystywane do testów nowych funkcjonalności, które miały zostać wprowadzone do nowego protokołu HTTP.
 Niedługo po oficjalnym zaakceptowaniu HTTP/2 ogłoszono, że SPDY nie będzie dalej wspierane.
 
-\section{Server Push}
+W kilku poniższych akapitach postaram się przybliżyć zmiany, które zostały wprowadzone do protokołu HTTP.
 
+\section{Protokół binarny}
+
+Kluczową zmianą, która determinuje brak wstecznej kompatybilności z HTTP/1.1, jest przejście na kodowanie binarne przesyłanych wiadomości.
+Jest to rozwiązanie dużo bardziej kompaktowe i łatwiejsze w implementacji, niż przesyłanie zwykłego tekstu.
+Dzięki temu zabiegowi w ramach jednego połączenia TCP z serwerem może zostać utworzonych wiele dwukierunkowych strumieni danych przesyłających wiadomości HTTP.
+Taka wiadomość to w rzeczywistości zapytanie od klienta lub odpowiedź serwera składające się z ramek.
+Każda ramka natomiast musi przynajmniej posiadać nagłówek z informacją, do którego strumienia danych należy.
+Kodowanie binarne nie ma wpływu na składnie zawartości ramki -- wszystkie nagłówki czy zapytania HTTP/1.1 pozostawiono bez zmian.
+\TODO schemat ramki i połączenia
+
+\section{Multiplexing}
+
+W poprzedniej wersji protokołu, pomimo, że istniała możliwość przesyłania wielu zapytań w ramach jednego połączenia, nie można było wykonywać ich równolegle.
+Każde zapytanie musiało być rozpatrywane i odesłane przez serwer do klienta zgodnie z kolejnością nadania, co powodowało efekt HOL (head-of-line blocking ODNOSNIK  PO PL?).
+Aby wykonywać zapytania równolegle należało utworzyć kilka zapytań TCP, co obciąża serwer oraz jest czasochłonne.
+Protokuł HTTP/2 umożlwia przesyłanie oraz odbieranie wielu wiadomości jednocześnie.
+Są one rozbijane na pojedyncze ramki, przesyłane, a następnie odczytywane i składane z powrotem w całość po stronie odbiorcy.
+Dzięki temu nie jest już konieczne uciekanie się do takich zabiegów jak:
+\begin{itemize}
+	\item scalanie plików (WEBPACK),
+	\item  wykorzystywanie spritów,
+	\item domain sharding (DOCZYTAC).
+\end{itemize}
+To wszystko sprawia, że aplikacje stają się szybsze oraz prostsze.
 
 \section{Prioretyzacja}
 
-  %-----------------
-  % Schemat komunikacji steganograficznej
-  %-----------------
+
 \section{Multiplexing}
 \label{sectionSchematKomunikacjiSteganograficznej}
 Podstawowy scenariusz, powszechny w literaturze na temat steganografii, odnosi 
@@ -185,14 +208,7 @@ charakterystyczną postać lub specyficzny histogram. Zastosowanie funkcji
 kryptograficznej w stosunku do tajnej informacji zmienia ją, a wynikowy rozkład 
 bitów jest nieprzewidywalny i w większości przypadków różny od standardowych 
 histogramów określonych dla podmienianych części wiadomości.
-  %-----------------
-  % Stegoanaliza
-  %-----------------
-\section{Protokół binarny}
 
-  %-----------------
-  % Metody tworzenia steganografii
-  %-----------------
 \section{Pipelining}
 Przesłanie danych za pomocą przekazu steganograficznego wiąże się w większości 
 przypadków z umieszczeniem dodatkowej informacji w wiadomości. Odbywa się to za 
