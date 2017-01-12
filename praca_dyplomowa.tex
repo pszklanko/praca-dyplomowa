@@ -51,7 +51,7 @@
 
 %%%%%%%%%%%%%%% Strona Tytułowa %%%%%%%%%%%%%%%%%
 % To trzeba wypelnic swoimi danymi
-\title{Wykorzystanie protokołu HTTP/2.0 do budowy szybkiej aplikacji internetowej}
+\title{Wykorzystanie protokołu HTTP/2 do budowy szybkiej aplikacji internetowej}
 
 % autor
 \author{Piotr Szklanko}
@@ -97,7 +97,7 @@
 Moim celem jest przeprowadzenie testów protokołu HTTP w najnowszej wersji 2.0.
 Obecnie powszechnie stosowana jest wersja 1.1, która została wprowadzona w roku 1999.
 Jednakże szybki rozwój technologii internetowych sprawia, że wprowadzony osiemnaście lat temu protokół przestaje powoli spełniać swoje zadanie.
-Obecnie bez wykorzystania serwerów CDN czy cache przeglądarki nie jest możliwe stworzenie płynnie działającej strony internetowej.
+Obecnie bez wykorzystania serwerów CDN czy cache przeglądarki oraz innych sposobów nie jest możliwe stworzenie płynnie działającej strony internetowej.
 Za pomocą własnoręcznie stworzonej aplikacji chcę przekonać się, czy wprowadzone funkcje faktycznie mają tak ogromny wpływ na szybkość komunikacji pomiędzy klientem i serwerem.
 
 Swoją aplikację stworzyłem wykorzystując zestaw oprogramowania MEAN -- MongoDB, Express.js, Angular i Node.js.
@@ -109,7 +109,7 @@ Swoją aplikację stworzyłem wykorzystując zestaw oprogramowania MEAN -- Mongo
 \end{itemize}
 Zdecydowałem się na to rozwiązanie z kilku powodów:
 \begin{itemize}
-	\item po przejrzeniu dostępnych w sieci informacji doszedłem do wniosku, że implementacja protokołu HTTP/2.0 jest najlepiej opisana oraz wspierana przez środowisko związane z JavaScriptem,
+	\item po przejrzeniu dostępnych w sieci informacji doszedłem do wniosku, że implementacja protokołu HTTP/2 jest najlepiej opisana oraz wspierana przez środowisko związane z JavaScriptem,
 	\item dobra znajomość języka JavaScript oraz jednoczesna chęć rozwoju umiejętności tworzenia aplikacji w tym języku,
 	\item chęć poszerzenia wiedzy dotyczącej budowania aplikacji internetowych za pomocą technologii javascriptowych,
 	\item nie ukrywam, że znaczący wpływ na moją decyzję miała również popularność języka JavaScript na rynku pracy.
@@ -119,17 +119,20 @@ Zdecydowałem się na to rozwiązanie z kilku powodów:
 % HTTP/2.0
 %-----------------
 \chapter{HTTP/2.0}
-Wprowadzenie o http/2.0
-skad (spdy)
-dlaczego tak pozno
-  %-----------------
-  % Historia
-  %-----------------
+
+\section{Historia}
+
+Pracę nad zmianami w protokole zapoczątkowała w 2009 roku firma Google ze swoim projektem SPDY.
+Zdecydowali się oni na stworzenie protokołu, który miał usprawnić działanie aplikacji oraz stron internetowych rozwiązując ograniczenia nałożone przez HTTP/1.1.
+Z biegiem czasu coraz więcej przeglądarek oraz stron internetowych, zarówno tych dużych jak i tych małych, zaczęło wspierać SPDY, co zainteresowało osoby pracujące nad protokołem HTTP.
+Zdecydowali się oni wykorzystać dokumentację protokołu SPDY jako początek prac nad własnym protokołem -- HTTP/2.
+Od tego momentu aż do roku 2015, kiedy to standard HTTP/2 został oficjalnie zaakceptowany (\TODO odnośnik RFC 7540 i może 7541), projekty były rozwijane równolegle.
+SPDY było wykorzystywane do testów nowych funkcjonalności, które miały zostać wprowadzone do nowego protokołu HTTP.
+Niedługo po oficjalnym zaakceptowaniu HTTP/2 ogłoszono, że SPDY nie będzie dalej wspierane.
+
 \section{Server Push}
 
-  %-----------------
-  % Pojęcia
-  %-----------------
+
 \section{Prioretyzacja}
 
   %-----------------
@@ -444,7 +447,7 @@ Kernel'',\newline 1 grudzień 2003.}
 
 \end{thebibliography}
 
-\zakonczenie  % wklejenie recenzji i opinii
+%\zakonczenie  % wklejenie recenzji i opinii
 
 \end{document}
 %+++ END +++
