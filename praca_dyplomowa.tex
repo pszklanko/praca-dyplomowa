@@ -227,9 +227,87 @@ Jeżeli mamy pewność, że użytkownik będzie potrzebował danych zasobów \re
 %\tech{K}$_{pub}$ i klucz prywatny \tech{K}$_{pryw}$).
 
 
-\section{Pipelining}
+\section{Kompresja nagłówków}
+
+\chapter{Budowa aplikacji}
+
+\section{Struktura aplikacji}
+\section{Aplikacja od strony serwera}
+
+% ciekawe elementy
+% opis bibliotek z github
+
+\chapter{Testy}
+
+\section{Chrome DevTools}
+
+Do pomiaru prędkości oraz uzyskania innych ważnych informacji wykorzystałem narzędzie Chrome DevTools.
+Opiszę tutaj po krótce co i jak mierzyłem za pomocą tego oprogramowania.
+
+Po uruchomieniu konsoli przeglądarki przechodzimy do zakładki Network i naszym oczom ukazuje się okno jak na rysunku \ref{schematDevops}.
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/devops.png}
+\end{center}
+	\caption{Wygląd okna Chrome DevTools}
+	\label{schematDevops}
+\end{figure}
+
+Widoczne okno składa się z pięciu głównych elementów:
+\begin{enumerate}
+	\item paska kontroli -- umożliwia on między innymi edycję wyglądu panelu sieciowego,
+	\item paska filtrów -- pozwala na stworzenie reguł i wybór tylko tych pakietów, które nas interesują,
+	\item paska przeglądu -- ukazuje nam oś czasu, która daje nam obraz tego, jak przesyłane były pakiety danych,
+	\item tabeli zapytań -- zawiera szczegółowe informacje na temat każdego zapytania
+	\item podsumowania -- zawiera informacje o łącznej liczbie zapytań, przesłanych danych oraz czasie trwania.
+\end{enumerate}
+
+W moich badaniach najczęściej korzystałem z informacji zawartych w tabeli zapytań, a szczególnie z przedstawionej w niej osi czasu.
+Po najechaniu kursorem na którykolwiek pasek na osi otrzymujemy szczegółowe informacje o czasie każdego z etapów zapytania jak na rysunku \ref{schematResourceTiming}.
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/resource-timing-data.png}
+\end{center}
+	\caption{Szczegółowe informacje na temat czasu zapytania}
+	\label{schematResourceTiming}
+\end{figure}
+
+\section{Testy wstępne}
+
+Przed przejściem do porównania prędkości działania obu wersji protokołu chciałem zaprezentować pierwsze efekty implementacji protokołu HTTP/2, które przedstawia rysunek \ref{schematWorkingExample}.
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/workingExample.png}
+\end{center}
+	\caption{Dowód działania protokołu HTTP/2}
+	\label{schematWorkingExample}
+\end{figure}
+
+Widzimy tutaj dwie rzeczy, które powinny nas zainteresować. W sekcji 'Protocol' oznaczonej na rysunku \ref{schematWorkingExample} numerem 1 widnieje napis h2 przy każdym zapytaniu.
+Jest to informacja, że do komunikacji z serwerem wykorzystana została najnowsza wersja protokołu HTTP.
+Dodatkowo w sekcji 'Connection ID' (na rysunku \ref{schematWorkingExample} jest to numer 2) widzimy, że wszystkie zapytania zostały wykonane z wykorzystaniem tego samego połączenia TCP.
+Nie mogłoby to mieć miejsca, gdybyśmy wykorzystali HTTP/1.1, co pokazuje rysunek ref{}.
+
+% wielkość nagłówka
+
+
+\section{Porównanie prędkości protokołu HTTP/2 i HTTP/1.1}
+
+\section{Porównanie prędkości przy bezpiecznym połączeniu HTTP/1.1}
+
+\section{Porównanie prędkości dla HTTP/1.1 z włączononym CACHE}
+
+\section{Porównanie prędkości przy wykorzystaniu Server Push}
 
 \chapter{Wnioski}
+
+% co jeszcze moglem zrobic
 
 %numery wygenerowane przy pomocy \tech{Shushi} nie byłyby rozróżnialne 
 %od numerów wygenerowanych przez stos sieciowy systemu.
@@ -247,8 +325,8 @@ Jeżeli mamy pewność, że użytkownik będzie potrzebował danych zasobów \re
 %-----------------
 % Dodatki 
 %-----------------
-\appendix
-\chapter{}
+%\appendix
+%\chapter{}
 
 
 \begin{thebibliography}{99}
