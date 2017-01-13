@@ -13,6 +13,7 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{tabularx}
 \usepackage{array}
+\usepackage{listings}
 \usepackage[polish]{babel}
 \usepackage{subfigure}
 \usepackage{amsfonts}
@@ -121,7 +122,7 @@ Zdecydowałem się na to rozwiązanie z kilku powodów:
 \chapter{HTTP/2}
 
 \section{Historia}
-
+\label{sectionHistoria}
 Pracę nad zmianami w protokole zapoczątkowała w 2009 roku firma Google ze swoim projektem SPDY.
 Zdecydowali się oni na stworzenie protokołu, który miał usprawnić działanie aplikacji oraz stron internetowych rozwiązując ograniczenia nałożone przez HTTP/1.1.
 Z biegiem czasu coraz więcej przeglądarek oraz stron internetowych, zarówno tych dużych jak i tych małych, zaczęło wspierać SPDY, co zainteresowało osoby pracujące nad protokołem HTTP.
@@ -134,21 +135,37 @@ Niedługo po oficjalnym zaakceptowaniu HTTP/2 ogłoszono, że SPDY nie będzie d
 W kilku poniższych akapitach postaram się przybliżyć zmiany, które zostały wprowadzone do protokołu HTTP.
 
 \section{Protokół binarny}
+\label{sectionProtokolBinarny}
 
-Kluczową zmianą, która determinuje brak wstecznej kompatybilności z HTTP/1.1, jest przejście na kodowanie binarne przesyłanych wiadomości.
+Kluczową zmianą, która determinuje brak wstecznej kompatybilności z HTTP/1.1, jest przejście na kodowanie binarne przesyłanych wiadomości. Przykładowa ramka widoczna jest na rysunku \ref{schematRamki}
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=1.0]{\ImgPath/rys/ramka.png}
+\end{center}
+	\caption{Schemat ramki protokołu HTTP/2}
+	\label{schematRamki}
+\end{figure}
 Jest to rozwiązanie dużo bardziej kompaktowe i łatwiejsze w implementacji, niż przesyłanie zwykłego tekstu.
 Dzięki temu zabiegowi w ramach jednego połączenia TCP z serwerem może zostać utworzonych wiele dwukierunkowych strumieni danych przesyłających wiadomości HTTP.
 Taka wiadomość to w rzeczywistości zapytanie od klienta lub odpowiedź serwera składające się z ramek.
 Każda ramka natomiast musi przynajmniej posiadać nagłówek z informacją, do którego strumienia danych należy.
 Kodowanie binarne nie ma wpływu na składnie zawartości ramki -- wszystkie nagłówki czy zapytania HTTP/1.1 pozostawiono bez zmian.
-\TODO schemat ramki i połączenia
 
 \section{Multiplexing}
-
+\label{sectionMultiplexing}
 W poprzedniej wersji protokołu, pomimo, że istniała możliwość przesyłania wielu zapytań w ramach jednego połączenia, nie można było wykonywać ich równolegle.
-Każde zapytanie musiało być rozpatrywane i odesłane przez serwer do klienta zgodnie z kolejnością nadania, co powodowało efekt HOL (head-of-line blocking ODNOSNIK  PO PL?).
+Każde zapytanie musiało być rozpatrywane i odesłane przez serwer do klienta zgodnie z kolejnością nadania, co powodowało efekt HOL (head-of-line blocking ODNOSNIK  DO JAKIEGOŚ ŹRÓDŁA?).
 Aby wykonywać zapytania równolegle należało utworzyć kilka zapytań TCP, co obciąża serwer oraz jest czasochłonne.
-Protokuł HTTP/2 umożlwia przesyłanie oraz odbieranie wielu wiadomości jednocześnie.
+Protokuł HTTP/2 umożlwia przesyłanie oraz odbieranie wielu wiadomości jednocześnie, co pokazuje schemat na rysunku \ref{schematMultiplexing}.
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/multiplexing.png}
+\end{center}
+	\caption{Schemat wykorzystania multiplexingu w HTTP/2}
+	\label{schematMultiplexing}
+\end{figure}
 Są one rozbijane na pojedyncze ramki, przesyłane, a następnie odczytywane i składane z powrotem w całość po stronie odbiorcy.
 Dzięki temu nie jest już konieczne uciekanie się do takich zabiegów jak:
 \begin{itemize}
@@ -160,236 +177,79 @@ To wszystko sprawia, że aplikacje stają się szybsze oraz prostsze.
 
 \section{Prioretyzacja}
 
+% wspomne o tym jesli zrobie testy
 
-\section{Multiplexing}
-\label{sectionSchematKomunikacjiSteganograficznej}
-Podstawowy scenariusz, powszechny w literaturze na temat steganografii, odnosi 
-się do sytuacji opisanej w \cite{PrisonersProblem}. Dwóch więźniów (w naszym 
-przypadku Alicja(\tech{A}) i Bob(\tech{B})) zamknięci są w dwóch odrębnych 
-celach. Mogą się ze sobą kontaktować, jednak ich cała korespondencja przechodzi 
-przez ręce Wartownika (\tech{W}). Ma on pełen wgląd do przekazywanych 
-informacji, więc może przechwycić wszelkie przekazywane tajemnice, a dodatkowo w 
-razie podejrzeń może nie dopuścić do komunikacji\footnote{podejrzana informacja 
-jest tu analogią do stosowania kryptografii przez więźniów}. W takim przypadku w 
-celu przekazania ważnych informacji \tech{A} i \tech{B} muszą posłużyć się 
-pewnego rodzaju podstępem. Muszą tak sformułować treść przekazu, aby \tech{W} 
-nie rozróżnił ,,niegroźnej'' wiadomości od wiadomości z ukrytym przekazem. 
-Dlatego też przekazują wiadomość, w której prawdziwa treść możliwa jest do 
-odczytania po złożeniu kolejno każdej np.  drugiej litery z każdego wyrazu.
+\section{Server push}
+\label{sectionServerPush}
+
+Wykorzystując protokół HTTP/1.1 nie mamy możliwości otrzymania zasobu, o który nie poprosiliśmy wysyłając zapytanie.
+Powoduje to opóźnienia na przykład podczas ładowania strony internetowej.
+Zanim otrzymamy skrypty czy arkusze styli, które wykorzystuje nasza strona musi ona o nie poprosić.
+Zapytanie do serwera wysyłane jest gdy w kodzie pliku html napotkamy na taki kod (przykład z mojego projektu):
+\begin{lstlisting}
+<!-- CSS -->
+<link rel="stylesheet"
+	  href="libs/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+      href="libs/font-awesome/css/font-awesome.min.css">
+
+<!-- JS -->
+<script src="libs/angular/angular.min.js"></script>
+\end{lstlisting}
+Takie rozwiązanie, chociaż w wielu przypadkach jest pożądane, tutaj jedynie spowalnia działanie aplikacji.
+Jeżeli mamy pewność, że użytkownik będzie potrzebował danych zasobów \ref{schematPush} możemy mu je od razu udostępnić, co zdecydowanie skraca czas ładowania aplikacji i dzięki temu unikam niechcianego efektu, gdy strona się załaduje, ale na przykład bez pliku zawierającego style, który jest dopiero przesyłany.
 \begin{figure}[!htbp]
 	\begin{center}
 \centering
-\includegraphics[scale=0.4]{\ImgPath/rys/schemat_komunikacji.png}
+\includegraphics[scale=0.6]{\ImgPath/rys/push.png}
 \end{center}
-	\caption{Schemat komunikacji steganograficznej}
-	\label{schematKomunikacji}
+	\caption{Schemat Server push HTTP/2}
+	\label{schematPush}
 \end{figure}
 
-Przedstawioną tak sytuację pokazuje rysunek 
-\ref{schematKomunikacji}\footnote{sporządzony na podstawie 
-\cite{schematKomunikacjiPrzypis}, rysunek 1, strona 3}. \tech{A} próbuje 
-przesłać tajną informację \tech{E} do \tech{B}. Cała komunikacja odbywa się 
-przez kanał publiczny, kontrolowany przez \tech{W}. W celu ukrycia faktu 
-komunikacji \tech{A} stara się ukryć tajny przekaz w informacji \tech{C}. W celu 
-uzyskania skutecznej steganografii \tech{W} nie może rozróżnić informacji 
-poprawnej, nie zawierającej tajnych danych, od informacji \tech{S}, która 
-zawiera tajną informację. W celu dodatkowego zabezpieczenia przekazu, \tech{A} i 
-\tech{B} mogą korzystać z funkcji kryptograficznej zabezpieczającej przekazywane 
-informacje. Można tu wykorzystać metody kryptografii symetrycznej (ustalony 
-klucz kryptograficzny \tech{K}) lub niesymetrycznej (klucz publiczny 
-\tech{K}$_{pub}$ i klucz prywatny \tech{K}$_{pryw}$).
+%Podstawowy scenariusz, powszechny w literaturze na temat steganografii, odnosi 
+%się do sytuacji opisanej w \cite{PrisonersProblem}. Dwóch więźniów (w naszym 
+%przypadku Alicja(\tech{A}) i Bob(\tech{B})) zamknięci są w dwóch odrębnych 
+%celach. 
+%
+%Przedstawioną tak sytuację pokazuje rysunek 
+%\ref{schematKomunikacji}\footnote{sporządzony na podstawie 
+%\cite{schematKomunikacjiPrzypis}, rysunek 1, strona 3}. \tech{A} próbuje 
+%przesłać tajną informację \tech{E} do \tech{B}. Cała komunikacja odbywa się 
+%przez kanał publiczny, kontrolowany przez \tech{W}. W celu ukrycia faktu 
+%komunikacji \tech{A} stara się ukryć tajny przekaz w informacji \tech{C}. W celu 
+%uzyskania skutecznej steganografii \tech{W} nie może rozróżnić informacji 
+%poprawnej, nie zawierającej tajnych danych, od informacji \tech{S}, która 
+%zawiera tajną informację. W celu dodatkowego zabezpieczenia przekazu, \tech{A} i 
+%\tech{B} mogą korzystać z funkcji kryptograficznej zabezpieczającej przekazywane 
+%informacje. Można tu wykorzystać metody kryptografii symetrycznej (ustalony 
+%klucz kryptograficzny \tech{K}) lub niesymetrycznej (klucz publiczny 
+%\tech{K}$_{pub}$ i klucz prywatny \tech{K}$_{pryw}$).
 
-Stosowanie technik kryptograficznych wpływa na poprawę bezpieczeństwa 
-przesyłanej informacji, jednak należy pamiętać o nieporządnych cechach jakie 
-mogą one wywołać. W większości przypadków umieszczenie tajnej informacji 
-steganograficznej w przekazie wiąże się z zamianą istniejącej już nieważnej 
-części informacji. Jednak każda porcja usuniętej informacji może mieć pewną 
-charakterystyczną postać lub specyficzny histogram. Zastosowanie funkcji 
-kryptograficznej w stosunku do tajnej informacji zmienia ją, a wynikowy rozkład 
-bitów jest nieprzewidywalny i w większości przypadków różny od standardowych 
-histogramów określonych dla podmienianych części wiadomości.
 
 \section{Pipelining}
-Przesłanie danych za pomocą przekazu steganograficznego wiąże się w większości 
-przypadków z umieszczeniem dodatkowej informacji w wiadomości. Odbywa się to za 
-pomocą podmiany tej części wiadomości (nagłówka TCP/IP), która wykazuje cechy 
-nadmiarowości lub której (kontrolowana) zmiana nie prowadzi do przerwania 
-transmisji. Pewną podgrupą może być w tym przypadku wykorzystanie pól 
-oryginalnie pustych (zerowych) lub niewykorzystywanych w istniejących 
-implementacjach.
 
-Kanały steganograficzne można podzielić na dwa zasadniczne 
-typy\cite{SweetyPresentation}:
-\begin{itemize}
-	\item kanał pojemnościowy (ang. storage channel) - informacja zawarta w 
-częściach wiadomości, polach nagłówka,
-	\item kanał czasowy (ang. timing channel) - informacja zawarta w czasach 
-wystąpienia danych zdarzeń, np. przesłania pakietu TCP/IP.
-\end{itemize}
-W przypadku sieci pakietowych można także połączyć dwa typu kanałów 
-steganograficznych, tworząc kanał mieszany, w którym jeden z typów (np. 
-pojemnościowy) będzie wykorzystywany do przekazywania informacji, a drugi (np. 
-czasowy) do sygnalizacji tego zdarzenia.
-
-Większość opracowanych programów służących do przesyłania danych z 
-wykorzystaniem steganografii opiera się na kanałach pojemnościowych. Wynika to z 
-faktu, że kanały czasowe narzucają pewne ograniczenia na generację pakietów 
-TCP/IP przez co ich wykrycie staje się prostsze.
-
-Dodatkowo należy zauważyć, że w sieciach pakietowych można skonstruować 
-abstrakcyjny kanał steganograficzny, w którym do przesyłania tajnych danych 
-lub/i obsługi protokołu steganograficznego wykorzystywane są różne pola 
-nagłówka. Zmiana wykorzystania danego pola może być dynamiczna, zależna od 
-wymaganej przepustowości lub w celu zminimalizowania wykrycia kanału 
-steganograficznego. 
-  %-----------------
-  % Cechy kanału steganograficznego
-  %-----------------
-\section{Kompresja danych}
-
-  %-----------------
-  % Steganografia w obiektach multimedialnych
-  %-----------------
-\section{Steganografia w obiektach multimedialnych}
-\label{sectionSteganografiaWObiektachMultimedialnych}
-
-%-----------------
-% Wnioski 
-%-----------------
 \chapter{Wnioski}
 
-Protokół TCP/IP jest najbardziej rozpowszechnionym i używanym protokołem 
-komunikacji między systemami w sieci Internet oraz w sieciach intranet. Niestety 
-został on opracowany na początku lat siedemdziesiątych, gdy problemy 
-bezpieczeństwa informacji nie stały na pierwszym miejscu. Ciągły wzrost działań 
-przestępczych w sieci Internet, w tym wymiana nielegalnych treści, prowadzi do 
-stosowania coraz to nowszych technik zabezpieczających. Z tego względu obserwuje 
-się działania mające na celu wprowadzenie tajnej komunikacji między przejętymi 
-systemami, tak aby nie wzbudzić ostrzeżeń w analizatorach sieciowych. Taka 
-ukryta komunikacja odbywa się z wykorzystaniem steganografii.
-
-Wprowadzenie steganografii do niskich warstwach stosu TCP/IP umożliwia obejście 
-wielu filtrów nałożonych na warstwy wyższe. Większość sieci oparta jest na 
-protokołach rodziny TCP/IP, przez co nie można zabronić ich używania. Możliwa 
-jest jedynie kontrola poprawności semantyki protokołów TCP/IP, a także 
-ewentualna ingerencja w przekazywane wartości, z uwzględnieniem stanowości 
-niektórych pól.
-
-Opracowany schemat generacji początkowych numerów sekwencyjnych w jak najlepszy 
-sposób odzwierciedla oryginalny proces zachodzący w stosie sieciowym systemu 
-Linux. W większości przypadków występujących w rzeczywistych sieciach i 
-systemach, numery wygenerowane przy pomocy \tech{Shushi} nie byłyby rozróżnialne 
-od numerów wygenerowanych przez stos sieciowy systemu.
-
-Jeżeli proces generacji wartości użytych do przekazania danych 
-steganograficznych zostanie oparty o oryginalne mechanizmy używane do ich 
-generacji, to pasywny analizator sieciowy nie będzie w stanie wykryć istnienia 
-anomalii. Różnice możliwe są do zaobserwowania w przypadku zaistnienia 
-specyficznych sytuacji występujących dla danej implementacji protokołu. W 
-przypadku zastosowania pasywnego analizatora wymaga to jednak oczekiwania na 
-taką sytuację. Z przeprowadzonych testów wynika, że lepszym podejściem jest 
-zastosowanie analizatorów aktywnych, które posiadają wiedzę na temat testowanych 
-systemów oraz ich chrakterystycznych cech implementacji. Skonstruowanie takiego 
-analizatora jest zadaniem stosunkowo prostym a daje bardzo wysoką skuteczność.
-
-Z przeprowadzonych testów wynika, że celowe jest prowadzenie dalszych prac w 
-następujących obszarach:
-\begin{itemize}
- \item dokładniejszy mechanizm generacji wartości mikrosekund
- \item wprowadzenie algorytmów zdolnych wykryć i uniemożliwić działanie 
-analizatora aktywnego
-\end {itemize}
-
-Jeżeli powyższe punkty nie zostaną spełnione, analizatory aktywne będą w stanie 
-wykryć istnienie modułu steganograficznego opartego na początkowych numerach 
-sekwencyjnych.
-
-\begin{tabular}{c|cc}
-pierwsza kolumna & druga & trzecia \\ \hline
-1 & 2 & 3 \\
-a & b & c \\
-\end{tabular} 
-
-\begin{equation}
- E = m c^2 \label{einstein}
-\end{equation}
-
-Rozwój opracowanego rozwiązania steganograficznego jest możliwy poprzez 
-wprowadzenie elementów  -- patrz wzór (\ref{einstein}) -- jak:
-\begin{itemize}
- \item obsługa innych, przyszłościowych protokołów sieciowych, takich jak SCTP 
-(ang. Stream Control Transmission Protocol)\cite{RFC2960}
- \item zapewnienie dwustronnej komunikacji z wykorzystaniem numerów 
-potwierdzenia \tech{ACK}
- \item przeniesienie implementacji do innych systemów operacyjnych
-\end{itemize}
-
-Wraz ze wzrostem przepustowości urządzeń sieciowych (obecnie 10Gb/s i więcej) 
-wzrasta problem analizy przepływających danych w czasie rzeczywistym. 
-Analizatory sieciowe muszą w coraz krótszym czasie zbadać coraz większy strumień 
-danych (miliony pakietów na sekundę). Jednak problem wzrostu prędkości sieci 
-utrudnia zadanie także osobom implementującym kanały steganograficzne w 
-protokole TCP/IP. Coraz więcej operacji wyższych warstw stosu sieciowego 
-przenoszonych jest do układów scalonych interfejsów sieciowych. Taka technologia 
-znana jest pod skrótem TOE (ang. TCP Offload Engine) i odnosi się przede 
-wszystkim do sprzętowej generacji sum kontrolnych oraz mechanizmu TSO (ang. TCP 
-segmentation offload). W następnych latach spodziewane jest przenoszenie 
-kolejnych elementów stosu sieciowego TCP/IP do implementacji sprzętowych.
-
-Ze względu na rozwój systemów zabezpieczających ruch sieciowy oraz wzrost 
-bezpieczeństwa systemów operacyjnych, w kolejnych latach wzrośnie także 
-wykorzystanie technik steganograficznych przez grupy przestępcze działające w 
-ramach Internetu. Z tego powodu poznanie technik steganograficznych oraz 
-wypracowanie metod obrony i wykrywania takiej komunikacji jest bardzo ważne.
+%numery wygenerowane przy pomocy \tech{Shushi} nie byłyby rozróżnialne 
+%od numerów wygenerowanych przez stos sieciowy systemu.
+%
+%\begin{tabular}{c|cc}
+%pierwsza kolumna & druga & trzecia \\ \hline
+%1 & 2 & 3 \\
+%a & b & c \\
+%\end{tabular} 
+%
+%\begin{equation}
+% E = m c^2 \label{einstein}
+%\end{equation}
 
 %-----------------
 % Dodatki 
 %-----------------
 \appendix
-\chapter{Porównanie numerów ISN jądra Linux i modułu Shushi}
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.21]{\ImgPath/rys/IPPortConstData.pdf}
-\end{center}
-	\caption{Numery ISN wygenerowane przez jądro oraz \tech{Shushi}, stałe 
-numery IP oraz porty TCP, stałe dane dla \tech{Shushi}, serie po około 2800 
-próbek.}
-	\label{IPPortConstData}
-\end{figure}
+\chapter{}
 
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.21]{\ImgPath/rys/IPPortConstDataDiff.pdf}
-\end{center}
-	\caption{Różnice pomiędzy kolejnymi numerami ISN wygenerowanymi przez 
-jądro oraz \tech{Shushi}, stałe numery IP oraz porty TCP, stałe dane dla 
-\tech{Shushi}, serie po około 60000 próbek.}
-	\label{IPPortConstDataDiff}
-\end{figure}
-
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.21]{\ImgPath/rys/IPPortRandData.pdf}
-\end{center}
-	\caption{Numery ISN wygenerowane przez jądro oraz \tech{Shushi}, stałe 
-numery IP oraz porty TCP, losowe dane dla \tech{Shushi}, serie po około 860 
-próbek.}
-	\label{IPPortRandData}
-\end{figure}
-
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.21]{\ImgPath/rys/IPPortRandDataDiff.pdf}
-\end{center}
-	\caption{Różnice pomiędzy kolejnymi numerami ISN wygenerowanymi przez 
-jądro oraz \tech{Shushi}, stałe numery IP oraz porty TCP, losowe dane dla 
-\tech{Shushi}, serie po około 60000 próbek.}
-	\label{IPPortRandDataDiff}
-\end{figure}
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
