@@ -292,18 +292,156 @@ Przed przejściem do porównania prędkości działania obu wersji protokołu ch
 Widzimy tutaj dwie rzeczy, które powinny nas zainteresować. W sekcji 'Protocol' oznaczonej na rysunku \ref{schematWorkingExample} numerem 1 widnieje napis h2 przy każdym zapytaniu.
 Jest to informacja, że do komunikacji z serwerem wykorzystana została najnowsza wersja protokołu HTTP.
 Dodatkowo w sekcji 'Connection ID' (na rysunku \ref{schematWorkingExample} jest to numer 2) widzimy, że wszystkie zapytania zostały wykonane z wykorzystaniem tego samego połączenia TCP.
-Nie mogłoby to mieć miejsca, gdybyśmy wykorzystali HTTP/1.1, co pokazuje rysunek ref{}.
+Nie mogłoby to mieć miejsca, gdybyśmy wykorzystali HTTP/1.1, co pokazuje rysunek \ref{schematWorkingExampleH1}.
 
-% wielkość nagłówka
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/workingExampleH1.png}
+\end{center}
+	\caption{Przykładowe linia czasu dla zapytań wykonanych w HTTP/1.1}
+	\label{schematWorkingExampleH1}
+\end{figure}
 
+Na rysunku widzimy, że protokół z jakiego korzystamy to HTTP/1.1, a wszystkie zapytania, które są wykonywane równolegle przesyłane są w ramach różnych połączeń TCP.
+Świadczą o tym wartości w kolumnie 'Connection ID'.
+
+Jeszcze jedną ciekawą rzeczą są wielkości nagłówków.
+Dzięki przejściu na kodowanie binarne nagłówki w protokole HTTP/2 są o wiele mniejsze niż te w jego starszym bracie.
+W swojej pracy stworzyłem możliwość wysłania zapytania, które w odpowiedzi dostaje odpowiedź w postaci samego nagłówka.
+Dzięki temu można porównać wielkość nagłówków HTTP na konkretnym przykładzie,
+Wyniki przedstawiaja rysunki \ref{schematEmptyRes} i \ref{schematEmptyResH1}.
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/emptyRes.png}
+\end{center}
+	\caption{Pusta odpowiedź w HTTP/2}
+	\label{schematEmptyRes}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/emptyResH1.png}
+\end{center}
+	\caption{Pusta odpowiedź w HTTP/1.1}
+	\label{schematEmptyResH1}
+\end{figure}
+
+Od razu widać, że nagłówki w najnowszej wersji protokołu uległy znacznej kompresji. 
+
+%Przed przejściem do właściwych testów chciałem jeszcze zaznaczyć, że protokół HTTP/2 wymga wykorzystanie %bezpiecznego połączenia.
+%Wygenerowałem własny certyfikat oraz potrzebne klucze i będę korzystał z bezpiecznego połączenia we wszystkich %pomiarach.
 
 \section{Porównanie prędkości protokołu HTTP/2 i HTTP/1.1}
 
+W ramach tego testu sprawdzałem prędkość ładowania wszystkich zasobów strony z wyłączonym CACHE przeglądarki oraz z ustawioną prędkością Regular 4G (20ms, 4.0 Mb/s, 3.0 Mb/s).
+Dane z wykorzystaniem protokołu HTTP/1.1 są przesyłane za pomocą niezabezpieczonego połączenia.
+HTTP/2 do utworzenia połączenia wymaga zabepieczenia SSL.
+
+\begin{tabular}{c|c|c}
+Próba & HTTP/1.1 & HTTP/2 \\ \hline
+1 & 1.23s & 1.26s\\
+2 & 1.49s & 1.12s\\
+3 & 1.28s & 1.39s\\
+4 & 1.20s & 1.09s\\
+5 & 1.22s & 1.09s\\
+6 & 1.25s & 1.26s\\
+7 & 1.21s & 1.12s\\
+8 & 1.25s & 1.11s\\
+9 & 1.21s & 1.16s\\
+10 & 1.26s & 1.10s\\ \hline
+ŚREDNIA & 1.26s & 1.17s\\
+\end{tabular}
+
+Tabela ukazuje wyniki wykonanych pomiarów.
+Jak widać protokół HTTP/2 przyśpiesza czas ładowania strony o około 15%.
+W dużej mierze jest to czas zaoszczędzony na nawiązywanie nowych połączeń TCP.
+Sporą oszczędność utrzymujemy też dzięki zmniejszeniu objętości nagłówków odpowiedzi.
+
+Na rysunkach \ref{schematBasicTest} oraz \ref{schematBasicTestH1} widoczny jest przykładowy wynik testu.
+W sekcji podsumowania widoczna jest całkowita objętość przesłanych danych. Są to odpowiednio 443 KB i439 KB dla protokołu HTTP/1.1 i HTTP/2,
+Możemy też porównać objętości oraz czasy przesyłania poszczególnych plików.
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/basicTest.png}
+\end{center}
+	\caption{Test dla HTTP/2}
+	\label{schematBasicTest}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/basicTestH1.png}
+\end{center}
+	\caption{Test dla HTTP/1.1}
+	\label{schematBasicTestH1}
+\end{figure}
+
 \section{Porównanie prędkości przy bezpiecznym połączeniu HTTP/1.1}
+
+W tym teście dane przesyłane za pomocą protokołu HTTP/1.1 są zabepieczone SSL.
+
+\begin{tabular}{c|c|c}
+Próba & HTTP/1.1 & HTTP/2 \\ \hline
+1 & 1.12s & 1.07s \\
+2 & 1.20s & 1.09s \\
+3 & 1.05s & 1.07s \\
+4 & 1.12s & 1.09s \\
+5 & 1.08s & 1.06s \\
+6 & 1.10s & 1.11s \\
+7 & 1.13s & 1.16s \\
+8 & 1.09s & 1.15s \\
+9 & 1.08s & 1.12s \\
+10 & 1.11s & 1.10s\\ \hline
+ŚREDNIA & 1.108s & 1.102s \\
+\end{tabular}
+
+Podczas tego testu otrzymałem zaskakujące wyniki.
+Całkowity czas ładowania się zasobów strony dla protokołu HTTP/1.1 z wykorzystaniem SSL jest krótszy, niż przy nieszyfrowanym połączeniu.
+Jest to zaskakujące, ponieważ szyfrowanie wymusza na nas podjęcie dodatkowych kroków na początku transmisji, które zabierają czas.
+
 
 \section{Porównanie prędkości dla HTTP/1.1 z włączononym CACHE}
 
+\begin{tabular}{c|c|c}
+Próba & HTTP/1.1 & HTTP/2 \\ \hline
+1 & & \\
+2 & & \\
+3 & & \\
+4 & & \\
+5 & & \\
+6 & & \\
+7 & & \\
+8 & & \\
+9 & & \\
+10 & & \\ \hline
+ŚREDNIA & & \\
+\end{tabular}
+
+
 \section{Porównanie prędkości przy wykorzystaniu Server Push}
+
+\begin{tabular}{c|c|c}
+Próba & HTTP/1.1 & HTTP/2 \\ \hline
+1 & & \\
+2 & & \\
+3 & & \\
+4 & & \\
+5 & & \\
+6 & & \\
+7 & & \\
+8 & & \\
+9 & & \\
+10 & & \\ \hline
+ŚREDNIA & & \\
+\end{tabular}
+
 
 \chapter{Wnioski}
 

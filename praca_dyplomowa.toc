@@ -13,9 +13,9 @@
 \contentsline {chapter}{\numberline {4}Testy}{8}{chapter.4}
 \contentsline {section}{\numberline {4.1}Chrome DevTools}{8}{section.4.1}
 \contentsline {section}{\numberline {4.2}Testy wst\IeC {\k e}pne}{10}{section.4.2}
-\contentsline {section}{\numberline {4.3}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci protoko\IeC {\l }u HTTP/2 i HTTP/1.1}{11}{section.4.3}
-\contentsline {section}{\numberline {4.4}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy bezpiecznym po\IeC {\l }\IeC {\k a}czeniu HTTP/1.1}{11}{section.4.4}
-\contentsline {section}{\numberline {4.5}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci dla HTTP/1.1 z w\IeC {\l }\IeC {\k a}czononym CACHE}{11}{section.4.5}
-\contentsline {section}{\numberline {4.6}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy wykorzystaniu Server Push}{11}{section.4.6}
-\contentsline {chapter}{\numberline {5}Wnioski}{12}{chapter.5}
-\contentsline {chapter}{Bibliografia}{13}{chapter*.4}
+\contentsline {section}{\numberline {4.3}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci protoko\IeC {\l }u HTTP/2 i HTTP/1.1}{12}{section.4.3}
+\contentsline {section}{\numberline {4.4}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy bezpiecznym po\IeC {\l }\IeC {\k a}czeniu HTTP/1.1}{12}{section.4.4}
+\contentsline {section}{\numberline {4.5}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci dla HTTP/1.1 z w\IeC {\l }\IeC {\k a}czononym CACHE}{15}{section.4.5}
+\contentsline {section}{\numberline {4.6}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy wykorzystaniu Server Push}{16}{section.4.6}
+\contentsline {chapter}{\numberline {5}Wnioski}{17}{chapter.5}
+\contentsline {chapter}{Bibliografia}{18}{chapter*.4}
