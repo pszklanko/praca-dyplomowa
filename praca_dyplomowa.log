@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.21)  14 JAN 2017 15:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.21)  14 JAN 2017 23:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -658,22 +658,22 @@ Package `prmag2017' (ZETiIS PW Thesis) ver. 0.1 (Oct 2016)
 ) (./praca_dyplomowa.aux)
 \openout1 = `praca_dyplomowa.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 91.
-LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 95.
+LaTeX Font Info:    ... okay on input line 95.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -705,7 +705,7 @@ e
 ))
 \c@lstlisting=\count120
 \AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 91.
+Package hyperref Info: Link coloring OFF on input line 95.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -715,50 +715,50 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count121
 )
-LaTeX Info: Redefining \ref on input line 91.
-LaTeX Info: Redefining \pageref on input line 91.
-LaTeX Info: Redefining \nameref on input line 91.
+LaTeX Info: Redefining \ref on input line 95.
+LaTeX Info: Redefining \pageref on input line 95.
+LaTeX Info: Redefining \nameref on input line 95.
 
 (./praca_dyplomowa.out) (./praca_dyplomowa.out)
 \@outlinefile=\write3
 \openout3 = `praca_dyplomowa.out'.
 
-Package hyperref Info: Option `pageanchor' set `false' on input line 92.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 92.
+Package hyperref Info: Option `pageanchor' set `false' on input line 96.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 96.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-LaTeX Font Info:    Calculating math sizes for size <18> on input line 92.
-LaTeX Font Info:    Try loading font information for OML+plm on input line 92.
+LaTeX Font Info:    Calculating math sizes for size <18> on input line 96.
+LaTeX Font Info:    Try loading font information for OML+plm on input line 96.
 
 (/usr/share/texlive/texmf-dist/tex/latex/polski/omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 92.
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 96.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/polski/omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 92.
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 96.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/polski/omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <18> on input line 92.
+(Font)              <18> on input line 96.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12.59995> on input line 92.
+(Font)              <12.59995> on input line 96.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <9> on input line 92.
-LaTeX Font Info:    Try loading font information for U+msa on input line 92.
+(Font)              <9> on input line 96.
+LaTeX Font Info:    Try loading font information for U+msa on input line 96.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 92.
+LaTeX Font Info:    Try loading font information for U+msb on input line 96.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -766,25 +766,25 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <logoPW.pdf, id=84, 533.83443pt x 531.90718pt>
 File: logoPW.pdf Graphic file (type pdf)
  <use logoPW.pdf>
-Package pdftex.def Info: logoPW.pdf used on input line 92.
+Package pdftex.def Info: logoPW.pdf used on input line 96.
 (pdftex.def)             Requested size: 35.12402pt x 35.0pt.
 
 <logoWE.pdf, id=85, 541.02126pt x 660.4675pt>
 File: logoWE.pdf Graphic file (type pdf)
  <use logoWE.pdf>
-Package pdftex.def Info: logoWE.pdf used on input line 92.
+Package pdftex.def Info: logoWE.pdf used on input line 96.
 (pdftex.def)             Requested size: 28.66243pt x 35.0pt.
 
-Overfull \hbox (17.41345pt too wide) in paragraph at lines 92--92
+Overfull \hbox (17.41345pt too wide) in paragraph at lines 96--96
 [] 
  []
 
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 92.
+(Font)              <12> on input line 96.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 92.
+(Font)              <8> on input line 96.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 92.
+(Font)              <6> on input line 96.
 (./streszczenia.tex [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logoPW.pdf> <./logoWE.pd
@@ -793,12 +793,12 @@ f
 pdfTeX warning: pdflatex (file ./logoWE.pdf): PDF inclusion: multiple pdfs with
  page group included in a single page
 >]) [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 92.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 96.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 96.
  [3
 
 
@@ -815,186 +815,202 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 ] [2
 
 ]
-Package hyperref Info: Option `pageanchor' set `true' on input line 92.
+Package hyperref Info: Option `pageanchor' set `true' on input line 96.
 
 Rozdzia\l  1.
+[1
 
-Overfull \hbox (3.25728pt too wide) in paragraph at lines 104--106
+]
+Overfull \hbox (3.25728pt too wide) in paragraph at lines 123--124
 []\T1/cmr/m/n/12 Swoj¡ apli-ka-cj¦ stwo-rzy-ªem wy-ko-rzy-stu-j¡c ze-staw opro-
 gra-mo-wa-nia MEAN
  []
 
 
-Overfull \hbox (1.54309pt too wide) in paragraph at lines 114--115
+Overfull \hbox (1.54309pt too wide) in paragraph at lines 137--138
 []\T1/cmr/m/n/12 dobra zna-jo-mo±¢ j¦-zyka Ja-va-Script oraz jed-no-cze-sna ch¦
 ¢ roz-woju umie-
  []
 
-[1
-
-] [2]
+[2]
 Rozdzia\l  2.
-<./rys/ramka.png, id=154, 408.727pt x 209.583pt>
+<./rys/ramka.png, id=161, 408.727pt x 209.583pt>
 File: ./rys/ramka.png Graphic file (type png)
  <use ./rys/ramka.png>
-Package pdftex.def Info: ./rys/ramka.png used on input line 144.
+Package pdftex.def Info: ./rys/ramka.png used on input line 176.
 (pdftex.def)             Requested size: 408.726pt x 209.58247pt.
 
-Overfull \hbox (18.726pt too wide) in paragraph at lines 144--145
+Overfull \hbox (18.726pt too wide) in paragraph at lines 176--177
  [] 
  []
 
 [3
 
-] <./rys/multiplexing.png, id=162, 562.1pt x 154.979pt>
+] <./rys/multiplexing.png, id=170, 562.1pt x 154.979pt>
 File: ./rys/multiplexing.png Graphic file (type png)
 
 <use ./rys/multiplexing.png>
-Package pdftex.def Info: ./rys/multiplexing.png used on input line 164.
+Package pdftex.def Info: ./rys/multiplexing.png used on input line 196.
 (pdftex.def)             Requested size: 337.2626pt x 92.98811pt.
  [4 <./rys/ramka.png>]
-Overfull \hbox (25.85205pt too wide) in paragraph at lines 192--193
-[][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (25.85205pt too wide) in paragraph at lines 224--225
+[][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (4.70703pt too wide) in paragraph at lines 194--196
-[][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (4.70703pt too wide) in paragraph at lines 226--228
+[][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-<./rys/push.png, id=171, 653.642pt x 254.551pt>
+<./rys/push.png, id=178, 653.642pt x 254.551pt>
 File: ./rys/push.png Graphic file (type png)
  <use ./rys/push.png>
-Package pdftex.def Info: ./rys/push.png used on input line 204.
+Package pdftex.def Info: ./rys/push.png used on input line 236.
 (pdftex.def)             Requested size: 392.18822pt x 152.73177pt.
 
-Overfull \hbox (2.18822pt too wide) in paragraph at lines 204--205
+Overfull \hbox (2.18822pt too wide) in paragraph at lines 236--237
  [] 
  []
 
-[5 <./rys/multiplexing.png>] [6 <./rys/push.png>]
+[5 <./rys/multiplexing.png>]
+<./rys/headercomp.png, id=196, 490.633pt x 412.742pt>
+File: ./rys/headercomp.png Graphic file (type png)
+
+<use ./rys/headercomp.png>
+Package pdftex.def Info: ./rys/headercomp.png used on input line 274.
+(pdftex.def)             Requested size: 294.38206pt x 247.64711pt.
+ [6 <./rys/push.png>] [7 <./rys/headercomp.png>]
 Rozdzia\l  3.
-[7
+
+Overfull \hbox (46.99707pt too wide) in paragraph at lines 299--300
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (25.85205pt too wide) in paragraph at lines 311--312
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[8
 
 ]
+Overfull \hbox (32.90039pt too wide) in paragraph at lines 315--316
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[9]
 Rozdzia\l  4.
-<./rys/devops.png, id=199, 703.12688pt x 730.22812pt>
+<./rys/devops.png, id=253, 703.12688pt x 730.22812pt>
 File: ./rys/devops.png Graphic file (type png)
  <use ./rys/devops.png>
-Package pdftex.def Info: ./rys/devops.png used on input line 252.
+Package pdftex.def Info: ./rys/devops.png used on input line 336.
 (pdftex.def)             Requested size: 421.87938pt x 438.14024pt.
 
-Overfull \hbox (31.87938pt too wide) in paragraph at lines 252--253
+Overfull \hbox (31.87938pt too wide) in paragraph at lines 336--337
  [] 
  []
 
-<./rys/resource-timing-data.png, id=201, 388.45125pt x 233.87375pt>
+<./rys/resource-timing-data.png, id=255, 388.45125pt x 233.87375pt>
 File: ./rys/resource-timing-data.png Graphic file (type png)
 
 <use ./rys/resource-timing-data.png>
-Package pdftex.def Info: ./rys/resource-timing-data.png used on input line 273.
+Package pdftex.def Info: ./rys/resource-timing-data.png used on input line 357.
 
 (pdftex.def)             Requested size: 233.07254pt x 140.32532pt.
- [8
+ [10
 
-] [9 <./rys/devops.png (PNG copy)>]
-<./rys/workingExample.png, id=218, 560.0925pt x 231.86626pt>
+] [11 <./rys/devops.png (PNG copy)>]
+<./rys/workingExample.png, id=272, 560.0925pt x 231.86626pt>
 File: ./rys/workingExample.png Graphic file (type png)
 
 <use ./rys/workingExample.png>
-Package pdftex.def Info: ./rys/workingExample.png used on input line 286.
+Package pdftex.def Info: ./rys/workingExample.png used on input line 370.
 (pdftex.def)             Requested size: 336.05809pt x 139.12082pt.
 
-<./rys/workingExampleH1.png, id=222, 560.8453pt x 230.36063pt>
+<./rys/workingExampleH1.png, id=276, 560.8453pt x 230.36063pt>
 File: ./rys/workingExampleH1.png Graphic file (type png)
 
 <use ./rys/workingExampleH1.png>
-Package pdftex.def Info: ./rys/workingExampleH1.png used on input line 300.
+Package pdftex.def Info: ./rys/workingExampleH1.png used on input line 384.
 (pdftex.def)             Requested size: 336.50978pt x 138.21742pt.
- [10 <./rys/resource-timing-data.png> <./rys/workingExample.png>] <./rys/emptyR
-es.png, id=233, 414.79968pt x 41.4047pt>
+ [12 <./rys/resource-timing-data.png> <./rys/workingExample.png>] <./rys/emptyR
+es.png, id=288, 414.79968pt x 41.4047pt>
 File: ./rys/emptyRes.png Graphic file (type png)
 
 <use ./rys/emptyRes.png>
-Package pdftex.def Info: ./rys/emptyRes.png used on input line 318.
+Package pdftex.def Info: ./rys/emptyRes.png used on input line 402.
 (pdftex.def)             Requested size: 248.88173pt x 24.84299pt.
 
-<./rys/emptyResH1.png, id=234, 432.11438pt x 41.4047pt>
+<./rys/emptyResH1.png, id=289, 432.11438pt x 41.4047pt>
 File: ./rys/emptyResH1.png Graphic file (type png)
 
 <use ./rys/emptyResH1.png>
-Package pdftex.def Info: ./rys/emptyResH1.png used on input line 327.
+Package pdftex.def Info: ./rys/emptyResH1.png used on input line 411.
 (pdftex.def)             Requested size: 259.27061pt x 24.84299pt.
- [11 <./rys/workingExampleH1.png (PNG copy)> <./rys/emptyRes.png (PNG copy)> <.
+ [13 <./rys/workingExampleH1.png (PNG copy)> <./rys/emptyRes.png (PNG copy)> <.
 /rys/emptyResH1.png (PNG copy)>]
-Overfull \hbox (7.7992pt too wide) in paragraph at lines 359--363
+Overfull \hbox (7.7992pt too wide) in paragraph at lines 443--447
 []\T1/cmr/m/n/12 Tabela uka-zuje wy-niki wy-ko-na-nych po-mia-rów. Jak wi-da¢ p
 ro-to-kóª HTTP/2
  []
 
-<./rys/basicTest.png, id=243, 557.83406pt x 458.46281pt>
+<./rys/basicTest.png, id=299, 557.83406pt x 458.46281pt>
 File: ./rys/basicTest.png Graphic file (type png)
 
 <use ./rys/basicTest.png>
-Package pdftex.def Info: ./rys/basicTest.png used on input line 371.
+Package pdftex.def Info: ./rys/basicTest.png used on input line 455.
 (pdftex.def)             Requested size: 334.703pt x 275.0798pt.
 
-<./rys/basicTestH1.png, id=244, 558.58687pt x 457.71pt>
+<./rys/basicTestH1.png, id=300, 558.58687pt x 457.71pt>
 File: ./rys/basicTestH1.png Graphic file (type png)
 
 <use ./rys/basicTestH1.png>
-Package pdftex.def Info: ./rys/basicTestH1.png used on input line 380.
+Package pdftex.def Info: ./rys/basicTestH1.png used on input line 464.
 (pdftex.def)             Requested size: 335.15471pt x 274.62813pt.
 
-Overfull \hbox (5.99458pt too wide) in paragraph at lines 386--386
+Overfull \hbox (5.99458pt too wide) in paragraph at lines 470--470
 []\T1/cmr/bx/n/17.28 Porównanie pr¦d-ko-±ci przy bez-piecz-nym po-
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [12]
-[13 <./rys/basicTest.png (PNG copy)>] [14 <./rys/basicTestH1.png (PNG copy)>]
+ [14]
+[15 <./rys/basicTest.png (PNG copy)>] [16 <./rys/basicTestH1.png (PNG copy)>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15]
-[16]
+ [17]
+[18]
 Rozdzia\l  5.
-[17
+[19
 
 ]
-Underfull \hbox (badness 1701) in paragraph at lines 490--492
-[]\T1/cmr/m/n/12 Information Scien-ces In-sti-tute, Uni-ver-sity of So-uthern C
-a-li-for-nia,
- []
-
-[18
-
-]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 501.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 556.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 544.
- [20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 544.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 562.
+ [20
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 562.
 
 (./praca_dyplomowa.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 544.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 544.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 562.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 562.
 Package rerunfilecheck Info: File `praca_dyplomowa.out' has not changed.
-(rerunfilecheck)             Checksum: B0951160C3A6D1A693A185D06B138CB1;1315.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 544.
+(rerunfilecheck)             Checksum: 8B959686EDC5C09AAC598DC5EBE63ECE;1315.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 562.
  ) 
 Here is how much of TeX's memory you used:
- 8899 strings out of 493029
- 125383 string characters out of 6136233
- 219662 words of memory out of 5000000
- 12161 multiletter control sequences out of 15000+600000
+ 8895 strings out of 493029
+ 125483 string characters out of 6136233
+ 227965 words of memory out of 5000000
+ 12141 multiletter control sequences out of 15000+600000
  37641 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,12n,32p,372b,977s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,12n,32p,372b,1741s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texliv
 e/texmf-dist/fonts/enc/dvips/pl/plms.enc}{/usr/share/texlive/texmf-dist/fonts/e
 nc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
@@ -1006,10 +1022,10 @@ super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb><
 ts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvet
 ic/uhvr8ac.pfb>
-Output written on praca_dyplomowa.pdf (26 pages, 1374104 bytes).
+Output written on praca_dyplomowa.pdf (26 pages, 1437173 bytes).
 PDF statistics:
- 383 PDF objects out of 1000 (max. 8388607)
- 321 compressed objects within 4 object streams
- 97 named destinations out of 1000 (max. 500000)
- 226 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 399 PDF objects out of 1000 (max. 8388607)
+ 335 compressed objects within 4 object streams
+ 112 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 
