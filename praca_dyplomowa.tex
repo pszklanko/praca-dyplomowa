@@ -282,6 +282,59 @@ Pzesyłamy jedynie pola, które się zmieniły (patrz rysunek \ref{schematHeader
 % \section{Struktura aplikacji}
 \section{node-spdy -- konfiguracja serwera}
 
+Najważniejszym elementem aplikacji jest konfiguracja serwera, który będzie w stanie obsłużyć zapytania HTTP/2.
+Jak pokazuje poniższy listing na początku należy ustawić opcje naszego serwera:
+
+\begin{enumerate}
+	\item plain -- jeśli opcja jest włączona, to serwer wykorzystuje tekstową wersję protokołu HTTP, 
+	\item ssl -- ustawienia zabezpieczeń połączenia,
+	\item protocols -- lista protokołów, z których możemy korzystać,
+	\item key -- klucz prywatny do połączeń SSL,
+	\item cert -- certyfikat serwera do połączenia SSL.
+\end{enumerate}
+
+Następnie uruchamiamy nasz serwer HTTP za pomocą polecenia createServer i podajemy mu naszą konfigurację oraz informację o tym, jak ma się zachować, gdy otrzyma zapytanie od klienta.
+W tym wypadku jest to moja aplikacja, więc za każdym razem, gdy serwer otrzyma zapytanie, będzie korzystał ze stworzonych przeze mnie funkcjonalności.
+
+Na koniec musimy sprawić, aby nasz serwer nasłuchiwał przychodzących połączeń.
+Osiągniemy to przy pomocy funkcji listen(), do której przekazujemy port, na którym nasza aplikacja ma działać.
+Jeśli wszystko zakończy się pomyślnie otrzymamy informację o tym, że aplikacja działa na wybranym przez nas porcie.
+Jeśli nie, to zostanie zwrócony komunikat o błędzie.
+
+\begin{lstlisting}
+var spdy           = require('spdy');
+var port           = 8080;
+var fs             = require('fs');
+var app            = express();
+
+	...
+	...
+	
+const options = {
+  spdy: {
+    plain: true,
+    ssl: false,
+    protocols: ['h2', 'http/1.1'],
+  },
+  key: fs.readFileSync(__dirname + '/server.key'),
+  cert: fs.readFileSync(__dirname + '/server.crt')
+};
+
+spdy
+  .createServer(options, app)
+  .listen(port, (error) => {
+    if (error) {
+      console.error(error);
+      return process.exit(1);
+    } else {
+      console.log('Listening on port ' + port + '.');
+    }
+  });
+\end{lstlisting}
+
+Jak widać podstawowa konfiguracja serwera HTTP/2 z wykorzystaniem biblioteki node-spdy(ODNOSNIK) jest dość prostym zadaniem.
+Należy jedynie pamiętać o wszystkich ustawieniach oraz wygenerowaniu kluczy dla połączenia SSL, bez których serwer niestety nie ruszy.
+
 \section{Server Push}
 
 Najbardziej wymagającą częścią projektu było zaimplementowanie funkcjonalności server push.
@@ -291,25 +344,30 @@ Jest to rozwiązanie, w którym tracimy czas na wysłanie zapytania o zasób, kt
 Server Push zaimplementowany w HTTP/2 daje nam taką możliwość.
 
 Patrząc na poniższy przykład postaram się przybliżyć sposób, w jaki udało mi się zaimplementować tę funkcjonalność.
-Najpierw tworzymy routing dla ścieżki '/push'
+Najpierw tworzymy routing dla ścieżki '/push'.
+W nim, w zależności od tego co chcemy przesłać, scenariusz będzie trochę inny.
+W moim przypadku przesyłam zawartość strony w postaci kodu html oraz bibliotekę jquery.
+Najpierw wczytujemy plik i zapisujemy jego zawartość.
+Jeśli wszystko zostało wykonane pomyślnie, to zapisujemy zawartość pliku html do wysłania jako odpowiedź na zapytanie użytkownika.
+Następnie wczytujemy zawartość pliku z biblioteką jQuery i umieszczamy ją w strumieniu danych wysyłanym w ramach funkcji Push.
+Ustawiamy nagłówki zasymulowanej prośby, typ odpowiedzi oraz dołączamy zawartość pliku, którą chcemy przesłać.
+Zamykamy strumień danych i kończymy odpowiedź komendą res.end().
+Oczywiście w ramach jednego zapytania możemy przesłać wiele zasobów.
+Tworzymy po prostu kolejne strumienie danych analogicznie do pierwszego, który jest przedstawiony poniżej.
 
-% screeny z push i bez push
+Server Push pomimo ogromnych usprawnień, których wyniki przybliżę w jednym z kolejnych rozdziałów, obarcza dewelopera pewną odpowiedzialnością.
+W związku z tym, że klient nie prosił o dane zasoby musimy koniecznie wypełnić nagłówek przesyłanego zasobu, aby przeglądarka mogła odpowiednio zareagować na odebrany zasób.
+Na przykład po prostu go odrzucić, gdy na przykład znajduje się on już w pamięci podręcznej.
+Jest to rozwiązane za pomocą PUSH\textunderscore PROMISE, które jest wysyłane do klienta przed faktycznym przesłaniem całego strumienia.
+Jeśli klient zechce, to może odrzucić dany strumień wysyłając ramkę RST\textunderscore STREAM.
+
 \begin{lstlisting}
-// sciezki do plików uproszczone dla przejrzystosci kodu
 app.get('/push', function(req, res) {
   fs.readFile('/push.html', function read(err, data) {
     if(err) {
       throw err;
     }
     content = data;
-    var stream = res.push('/push.html', {
-      status: 200, // optional
-      method: 'GET', // optional
-      request: { accept: '*/*' },
-      response: { 'content-type': 'text/html; charset=UTF-8' }
-    })
-    stream.on('error', function() {})
-    stream.end(content)
     res.write(content)
   })
 
@@ -318,18 +376,48 @@ app.get('/push', function(req, res) {
       throw err;
     }
     content = data;
-    var stream1 = res.push('/libs/jquery/dist/jquery.js', {
+    var stream = res.push('/libs/jquery/dist/jquery.js', {
       status: 200, // optional
       method: 'GET', // optional
       request: { accept: '*/*' },
       response: { 'content-type': 'application/javascript' }
     })
-    stream1.on('error', function() {})
-    stream1.end(content)
+    stream.on('error', function(err) {
+      console.log(err);
+    })
+    stream.end(content)
     res.end();
   })
 })
 \end{lstlisting}
+
+Ciekawy jest też wygląd okienka szczegółów zapytania w Google DevTools.
+Na rysunku \ref{schematNoPushDetails} widzimy przykład zapytania bez wykorzystania server push.
+Znajdują się tutaj typowe informacje dla zwykłego zapytania HTTP.
+Dokładnie mam w tym wypadku na myśli czas wysłania zapytania oraz oczekiwania na początek odpowiedzi od serwera.
+Natomiast na rysunku \ref{schematPushDetails} nie ma tych informacji.
+Świadczy to o tym, że klient nie wysłał prośby o dany plik, a mimo to został on wysłany.
+Dodatkowym potwierdzeniem, że korzystamy z server push jest informacja, że inicjatorem zapytania jest Push.
+Widać też, że czas zapytania to prawie 3 razy mniej dla danych przesłanych z wykorzystaniem możliwości HTTP/2.
+Widać tutaj jak dużo czasu trwa oczekiwanie na zasoby, które mogłyby zostać wysłane od razu.
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/noPushDetails.png}
+\end{center}
+	\caption{Szczegóły zapytania wysłanego bez wykorzystania Server Push}
+	\label{schematNoPushDetails}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.6]{\ImgPath/rys/pushDetails.png}
+\end{center}
+	\caption{Szczegóły zapytania wysłanego z wykorzystaniem Server Push}
+	\label{schematPushDetails}
+\end{figure}
 
 \chapter{Testy}
 
@@ -370,7 +458,7 @@ Po najechaniu kursorem na którykolwiek pasek na osi otrzymujemy szczegółowe i
 	\label{schematResourceTiming}
 \end{figure}
 
-\section{Testy wstępne}
+\section{Przygotowanie testóœ}
 
 Przed przejściem do porównania prędkości działania obu wersji protokołu chciałem zaprezentować pierwsze efekty implementacji protokołu HTTP/2, które przedstawia rysunek \ref{schematWorkingExample}.
 
@@ -451,12 +539,12 @@ Próba & HTTP/1.1 & HTTP/2 \\ \hline
 \end{tabular}
 
 Tabela ukazuje wyniki wykonanych pomiarów.
-Jak widać protokół HTTP/2 przyśpiesza czas ładowania strony o około 15%.
+Jak widać protokół HTTP/2 przyśpiesza czas ładowania strony o około 15\%.
 W dużej mierze jest to czas zaoszczędzony na nawiązywanie nowych połączeń TCP.
 Sporą oszczędność utrzymujemy też dzięki zmniejszeniu objętości nagłówków odpowiedzi.
 
 Na rysunkach \ref{schematBasicTest} oraz \ref{schematBasicTestH1} widoczny jest przykładowy wynik testu.
-W sekcji podsumowania widoczna jest całkowita objętość przesłanych danych. Są to odpowiednio 443 KB i439 KB dla protokołu HTTP/1.1 i HTTP/2,
+W sekcji podsumowania widoczna jest całkowita objętość przesłanych danych. Są to odpowiednio 443 KB i 439 KB dla protokołu HTTP/1.1 i HTTP/2,
 Możemy też porównać objętości oraz czasy przesyłania poszczególnych plików.
 
 \begin{figure}[!htbp]
@@ -483,41 +571,41 @@ W tym teście dane przesyłane za pomocą protokołu HTTP/1.1 są zabepieczone S
 
 \begin{tabular}{c|c|c}
 Próba & HTTP/1.1 & HTTP/2 \\ \hline
-1 & 1.12s & 1.07s \\
-2 & 1.20s & 1.09s \\
-3 & 1.05s & 1.07s \\
-4 & 1.12s & 1.09s \\
-5 & 1.08s & 1.06s \\
-6 & 1.10s & 1.11s \\
-7 & 1.13s & 1.16s \\
-8 & 1.09s & 1.15s \\
-9 & 1.08s & 1.12s \\
-10 & 1.11s & 1.10s\\ \hline
-ŚREDNIA & 1.108s & 1.102s \\
+1 & 1.22s & 1.25s \\
+2 & 1.49s & 1.29s \\
+3 & 1.27s & 1.20s \\
+4 & 1.26s & 1.18s \\
+5 & 1.27s & 1.17s \\
+6 & 1.26s & 1.24s \\
+7 & 1.26s & 1.20s \\
+8 & 1.26s & 1.23s \\
+9 & 1.31s & 1.21s \\
+10 & 1.36s & 1.17s\\ \hline
+ŚREDNIA & 1.29s & 1.21s \\
 \end{tabular}
 
-Podczas tego testu otrzymałem zaskakujące wyniki.
-Całkowity czas ładowania się zasobów strony dla protokołu HTTP/1.1 z wykorzystaniem SSL jest krótszy, niż przy nieszyfrowanym połączeniu.
-Jest to zaskakujące, ponieważ szyfrowanie wymusza na nas podjęcie dodatkowych kroków na początku transmisji, które zabierają czas.
-
+Wyniki poniższego testu kolejny raz pokazują wyższość nowszej wersji protokołu HTTP.
+Jednakże różnica 6\% nie pozwala powiedzieć, że jest to ogromna różnica.
+Na podstawie tego testu widzimy też, że w przypadku wykorzystania zabepieczonego połączenia czasy w przypadku HTTP/1.1 są minimalnie większe, niż bez wykorzystania tego protokołu.
 
 \section{Porównanie prędkości dla HTTP/1.1 z włączononym CACHE}
 
 \begin{tabular}{c|c|c}
 Próba & HTTP/1.1 & HTTP/2 \\ \hline
-1 & 410ms & 434ms \\
-2 & 421ms & 383ms \\
-3 & 420ms & 427ms \\
-4 & 374ms & 411ms \\
-5 & 356ms & 418ms \\
-6 & 387ms & 455ms \\
-7 & 313ms & 457ms \\
-8 & 517ms & 396ms \\
-9 & 468ms & 431ms \\
-10 & 344ms & 432ms \\ \hline
-ŚREDNIA & 401ms & 424ms \\
+1 & 709ms & 534ms \\
+2 & 555ms & 483ms \\
+3 & 622ms & 527ms \\
+4 & 625ms & 511ms \\
+5 & 550ms & 518ms \\
+6 & 546ms & 555ms \\
+7 & 603ms & 557ms \\
+8 & 517ms & 496ms \\
+9 & 584ms & 531ms \\
+10 & 521ms & 532ms \\ \hline
+ŚREDNIA & 583ms & 524ms \\
 \end{tabular}
 
+Kolejny test, w którym nieznacznie wygrywa nowsza wersja protokołu -- około 11/%
 
 \section{Porównanie prędkości przy wykorzystaniu Server Push}
 
