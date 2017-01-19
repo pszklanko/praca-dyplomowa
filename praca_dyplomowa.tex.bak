@@ -20,7 +20,6 @@
 \usepackage{verbatim}
 \usepackage{indentfirst}
 \usepackage[pdftex]{hyperref}
-\usepackage[table]{xcolor}
 
 \lstset{
 	numbers=left
@@ -100,14 +99,14 @@
 % Wstęp
 %-----------------
 \chapter{Wstęp}
-Moim celem jest przeprowadzenie testów protokołu HTTP w najnowszej wersji -- HTTP/2 (dokumentacja: \cite{RFC7540}).
-Obecnie powszechnie stosowana jest wersja 1.1 (dokumentacja: \cite{RFC2616}), która została wprowadzona w roku 1999.
+Moim celem jest przeprowadzenie testów protokołu HTTP w najnowszej wersji -- HTTP/2.
+Obecnie powszechnie stosowana jest wersja 1.1, która została wprowadzona w roku 1999.
 Jednakże szybki rozwój technologii internetowych sprawia, że wprowadzony osiemnaście lat temu protokół przestaje powoli spełniać swoje zadanie.
-w tym momencie bez wykorzystania takich środków jak:
+Obecnie bez wykorzystania takich środków jak:
 \begin{enumerate}
 	\item pamięć cache przeglądarki, dzięki której nie musimy przesyłać wszystkich plików naszej aplikacji do użytkownika, który korzysta z niej kolejny raz. 
 	Wysyłamy jedynie to, co się zmieniło,
-	\item wielu połączeń TCP -- wiele połączeń TCP oznacza straty związane z czasem wymaganym do nawiązania połączenia\cite{connectionMng}.
+	\item wielu połączeń TCP -- wiele połączeń TCP oznacza straty związane z czasem wymaganym do nawiązania połączenia.
 	Jest to szczególnie widoczne przy pobieraniu małych zasobów, gdzie czas nawiązania połączenia jest duży w stosunku do czasu wykonania samego zapytania.
 	Niestety w przypadku HTTP/1.1 jest to jedyny sposób na jednoczesne przesyłanie wielu zasobów,
 	\item łączenia plików -- sposób na ograniczenie liczby połączeń.
@@ -117,11 +116,11 @@ w tym momencie bez wykorzystania takich środków jak:
 \end{enumerate}
 nie jest możliwe stworzenie rozbudowanej aplikacji, która działałaby w sposób satysfakcjonujący użytkownika.
 Gdyby zmiany, które ma wprowadzić protokół HTTP/2 faktycznie pozwalały zapomnieć o wspomnianych środkach, to życie wielu developerów stałoby się dużo łatwiejsze.
-Dzięki temu mogliby oni ten czas poświęcić na rozwój aplikacji.
+Dzięki temu mogliby się oni ten czas poświęcić na rozwój aplikacji.
 
-Za pomocą własnoręcznie stworzonej aplikacji chcę przekonać się, czy wprowadzone funkcje faktycznie mają tak ogromny wpływ na szybkość komunikacji pomiędzy klientem i serwerem. Dodatkowo praca ta była dla mnie motywacją do lepszego poznania protokołu HTTP ogólnie, nie tylko jego najnowszej wersji.
+Za pomocą własnoręcznie stworzonej aplikacji chcę przekonać się, czy wprowadzone funkcje faktycznie mają tak ogromny wpływ na szybkość komunikacji pomiędzy klientem i serwerem.
 
-Swoją aplikację stworzyłem wykorzystując zestaw oprogramowania MEAN\cite{mean} -- MongoDB, Express.js, Angular i Node.js.
+Swoją aplikację stworzyłem wykorzystując zestaw oprogramowania MEAN -- MongoDB, Express.js, Angular i Node.js.
 
 \begin{itemize}
 	\item MongoDB -- baza danych NoSQL,
@@ -145,7 +144,7 @@ Dodatkowo, poza narzędziami składającymi się na zestaw MEAN, wykorzystałem 
 	\item node-spdy -- zewnętrzny moduł do node.js, który umożliwia tworzenie serwerów wspierających HTTP/2.
 	Jest on kompatybilny z biblioteką Express.js, którą wykorzystuję w swoim projekcie.
 	Dzięki temu modułowi możemy zaimplementować serwer HTTP/2 wraz z Server Push.
-	Pomimo, że nie jest to oficjalny moduł node.js, to trwające obecnie prace, które mają na celu wdrożenie HTTP/2 oficjalnie do node.js, bazują na tej bibliotece,
+	Pomimo, że nie jest to oficjalny moduł node.js, to trwające obecnie prace, które mają na celu wdrożenie HTTP/2 oficjalnie do node.js bazują na tej bibliotece,
 	\item mongoose -- ułatwia modelowanie danych mongoDB, walidację oraz pisanie logiki biznesowej. 
 \end{enumerate}
 
@@ -161,7 +160,7 @@ Zdecydowali się oni na stworzenie protokołu, który miał usprawnić działani
 Z biegiem czasu coraz więcej przeglądarek oraz stron internetowych, zarówno tych dużych jak i tych małych, zaczęło wspierać SPDY, co zainteresowało osoby pracujące nad protokołem HTTP.
 Zdecydowali się oni wykorzystać dokumentację protokołu SPDY jako początek prac nad własnym protokołem -- HTTP/2.
 Od tego momentu aż do roku 2015, kiedy to standard HTTP/2 został oficjalnie zaakceptowany 
-(specyfikacja protokołu: \cite{RFC7540}), projekty były rozwijane równolegle.
+(\TODO odnośnik RFC 7540 i może 7541), projekty były rozwijane równolegle.
 SPDY było wykorzystywane do testów nowych funkcjonalności, które miały zostać wprowadzone do nowego protokołu HTTP.
 Niedługo po oficjalnym zaakceptowaniu HTTP/2 ogłoszono, że SPDY nie będzie dalej wspierane.
 
@@ -170,25 +169,25 @@ W kilku poniższych akapitach postaram się przybliżyć zmiany, które zostały
 \section{Protokół binarny}
 \label{sectionProtokolBinarny}
 
-Kluczową zmianą, która determinuje brak wstecznej kompatybilności z HTTP/1.1, jest przejście na kodowanie binarne przesyłanych wiadomości. Przykładowa ramka widoczna jest na rysunku \ref{schematRamki}.
+Kluczową zmianą, która determinuje brak wstecznej kompatybilności z HTTP/1.1, jest przejście na kodowanie binarne przesyłanych wiadomości. Przykładowa ramka widoczna jest na rysunku \ref{schematRamki}
 \begin{figure}[!htbp]
 	\begin{center}
 \centering
 \includegraphics[scale=1.0]{\ImgPath/rys/ramka.png}
 \end{center}
-	\caption{Schemat ramki protokołu HTTP/2 (źródło: \cite{http2Fundamentals})}
+	\caption{Schemat ramki protokołu HTTP/2}
 	\label{schematRamki}
 \end{figure}
 Jest to rozwiązanie dużo bardziej kompaktowe i łatwiejsze w implementacji, niż przesyłanie zwykłego tekstu.
 Dzięki temu zabiegowi w ramach jednego połączenia TCP z serwerem może zostać utworzonych wiele dwukierunkowych strumieni danych przesyłających wiadomości HTTP.
 Taka wiadomość to w rzeczywistości zapytanie od klienta lub odpowiedź serwera składające się z ramek.
-Każda ramka natomiast musi posiadać przynajmniej nagłówek z informacją, do którego strumienia danych należy.
+Każda ramka natomiast musi przynajmniej posiadać nagłówek z informacją, do którego strumienia danych należy.
 Kodowanie binarne nie ma wpływu na składnie zawartości ramki -- wszystkie nagłówki czy zapytania HTTP/1.1 pozostawiono bez zmian.
 
 \section{Multiplexing}
 \label{sectionMultiplexing}
 W poprzedniej wersji protokołu, pomimo, że istniała możliwość przesyłania wielu zapytań w ramach jednego połączenia, nie można było wykonywać ich równolegle.
-Każde zapytanie musiało być rozpatrywane i odesłane przez serwer do klienta zgodnie z kolejnością nadania, co powodowało efekt HOL (dokładniejszy opis problemu: \cite{hol}).
+Każde zapytanie musiało być rozpatrywane i odesłane przez serwer do klienta zgodnie z kolejnością nadania, co powodowało efekt HOL (head-of-line blocking ODNOSNIK  DO JAKIEGOŚ ŹRÓDŁA?).
 Aby wykonywać zapytania równolegle należało utworzyć kilka zapytań TCP, co obciąża serwer oraz jest czasochłonne.
 Protokół HTTP/2 umożliwia przesyłanie oraz odbieranie wielu wiadomości jednocześnie, co pokazuje schemat na rysunku \ref{schematMultiplexing}.
 \begin{figure}[!htbp]
@@ -196,35 +195,28 @@ Protokół HTTP/2 umożliwia przesyłanie oraz odbieranie wielu wiadomości jedn
 \centering
 \includegraphics[scale=0.6]{\ImgPath/rys/multiplexing.png}
 \end{center}
-	\caption{Schemat wykorzystania multiplexingu w HTTP/2 (źródło: \cite{http2Fundamentals})}
+	\caption{Schemat wykorzystania multiplexingu w HTTP/2}
 	\label{schematMultiplexing}
 \end{figure}
 Są one rozbijane na pojedyncze ramki, przesyłane, a następnie odczytywane i składane z powrotem w całość po stronie odbiorcy.
 Dzięki temu nie jest już konieczne uciekanie się do takich zabiegów jak:
 \begin{itemize}
-	\item scalanie plików (na przykład WEBPACK),
-	\item  wykorzystywanie spritów (więcej o użyciu spritów: \cite{sprites}),
-	\item domain sharding (dla zainteresowanych: \cite{domainSharding}).
+	\item scalanie plików (WEBPACK),
+	\item  wykorzystywanie spritów,
+	\item domain sharding (DOCZYTAC).
 \end{itemize}
 To wszystko sprawia, że aplikacje stają się szybsze oraz prostsze.
 
 \section{Pierwszeństwo}
 
-Po przeczytaniu poprzedniej sekcji możemy dojść do wniosku, że multiplexing nie ma zbytniego prawa działać, bo przecież zazwyczaj kolejność otrzymanych informacji jednak ma znaczenie.
-Z tego powodu HTTP/2 wprowadza system wag zapytań.
-Umożliwia on:
-\begin{enumerate}
-	\item przypisanie wagi w postaci liczby naturalnej od 1 do 256 każdemu strumieniowi danych,
-	\item ustalenie zależności danego strumienia od innych.
-\end{enumerate}
-Dzięki tym zabiegom serwer potrafi rozdysponować zasoby (np. CPU czy pamięć) tak, aby w optymalny sposób wykonać prośby nadesłane przez klienta.
+% wspomne o tym jesli zrobie testy
 
 \section{Server push}
 \label{sectionServerPush}
 
 Wykorzystując protokół HTTP/1.1 nie mamy możliwości otrzymania zasobu, o który nie poprosiliśmy wysyłając zapytanie.
 Powoduje to opóźnienia na przykład podczas ładowania strony internetowej.
-Zanim otrzymamy skrypty czy arkusze stylów, które wykorzystuje nasza strona musi ona o nie poprosić.
+Zanim otrzymamy skrypty czy arkusze styli, które wykorzystuje nasza strona musi ona o nie poprosić.
 Zapytanie do serwera wysyłane jest gdy w kodzie pliku HTML napotkamy na taki kod (przykład z mojego projektu):
 \begin{lstlisting}
 <!-- CSS -->
@@ -243,15 +235,35 @@ Jeżeli mamy pewność, że użytkownik będzie potrzebował danych zasobów \re
 \centering
 \includegraphics[scale=0.6]{\ImgPath/rys/push.png}
 \end{center}
-	\caption{Schemat Server push HTTP/2 (źródło: \cite{http2Fundamentals})}
+	\caption{Schemat Server push HTTP/2}
 	\label{schematPush}
 \end{figure}
+
+%Podstawowy scenariusz, powszechny w literaturze na temat steganografii, odnosi 
+%się do sytuacji opisanej w \cite{PrisonersProblem}. Dwóch więźniów (w naszym 
+%przypadku Alicja(\tech{A}) i Bob(\tech{B})) zamknięci są w dwóch odrębnych 
+%celach. 
+%
+%Przedstawioną tak sytuację pokazuje rysunek 
+%\ref{schematKomunikacji}\footnote{sporządzony na podstawie 
+%\cite{schematKomunikacjiPrzypis}, rysunek 1, strona 3}. \tech{A} próbuje 
+%przesłać tajną informację \tech{E} do \tech{B}. Cała komunikacja odbywa się 
+%przez kanał publiczny, kontrolowany przez \tech{W}. W celu ukrycia faktu 
+%komunikacji \tech{A} stara się ukryć tajny przekaz w informacji \tech{C}. W celu 
+%uzyskania skutecznej steganografii \tech{W} nie może rozróżnić informacji 
+%poprawnej, nie zawierającej tajnych danych, od informacji \tech{S}, która 
+%zawiera tajną informację. W celu dodatkowego zabezpieczenia przekazu, \tech{A} i 
+%\tech{B} mogą korzystać z funkcji kryptograficznej zabezpieczającej przekazywane 
+%informacje. Można tu wykorzystać metody kryptografii symetrycznej (ustalony 
+%klucz kryptograficzny \tech{K}) lub niesymetrycznej (klucz publiczny 
+%\tech{K}$_{pub}$ i klucz prywatny \tech{K}$_{pryw}$).
+
 
 \section{Kompresja nagłówków}
 
 Kolejną ważną, chociaż pozornie niezauważalną zmianą jest kompresja nagłówków.
 Pomimo, że problem może wydawać się marginalny, to te kilka bajtów w każdym zapytaniu potrafi dość mocno wydłużyć czas komunikacji z serwerem.
-HTTP/2 wykorzystuje format kompresji zwany HPACK (opis stndardu: \cite{hpack}), który dzięki wykorzystaniu dwóch technik -- kodowania oraz indeksowania, jest w stanie znacznie usprawnić komunikację ze względu na nagłówki.
+HTTP/2 wykorzystuje format kompresji zwany HPACK, który dzięki wykorzystaniu dwóch technik -- kodowania oraz indeksowania, jest w stanie znacznie usprawnić komunikację ze względu na nagłówki.
 Po pierwsze kodowanie Huffmana znacznie kompresuje przesyłane dane.
 Dodatkowo klient oraz serwer przechowują listę widzianych wcześniej nagłówków i nie ma potrzeby wysyłania za każdym razem całego nagłówka.
 Przesyłamy jedynie pola, które się zmieniły (patrz rysunek \ref{schematHeaderComp}).
@@ -261,7 +273,7 @@ Przesyłamy jedynie pola, które się zmieniły (patrz rysunek \ref{schematHeade
 \centering
 \includegraphics[scale=0.6]{\ImgPath/rys/headercomp.png}
 \end{center}
-	\caption{Kompresja nagłówków w HTTP/2 (źródło: \cite{http2Fundamentals})}
+	\caption{Kompresja nagłówków w HTTP/2}
 	\label{schematHeaderComp}
 \end{figure}
 
@@ -332,7 +344,6 @@ Jest to rozwiązanie, w którym tracimy czas na wysłanie zapytania o zasób, kt
 Server Push zaimplementowany w HTTP/2 daje nam taką możliwość.
 
 Patrząc na poniższy przykład postaram się przybliżyć sposób, w jaki udało mi się zaimplementować tę funkcjonalność.
-
 Najpierw tworzymy routing dla ścieżki '/push'.
 W nim, w zależności od tego co chcemy przesłać, scenariusz będzie trochę inny.
 W moim przypadku przesyłam zawartość strony w postaci kodu HTML oraz bibliotekę jquery.
@@ -346,7 +357,7 @@ Tworzymy po prostu kolejne strumienie danych analogicznie do pierwszego, który 
 
 Server Push pomimo ogromnych usprawnień, których wyniki przybliżę w jednym z kolejnych rozdziałów, obarcza dewelopera pewną odpowiedzialnością.
 W związku z tym, że klient nie prosił o dane zasoby musimy koniecznie wypełnić nagłówek przesyłanego zasobu, aby przeglądarka mogła odpowiednio zareagować na odebrany zasób.
-Na przykład po prostu go odrzucić, gdy znajduje się on już w pamięci podręcznej.
+Na przykład po prostu go odrzucić, gdy na przykład znajduje się on już w pamięci podręcznej.
 Jest to rozwiązane za pomocą PUSH\textunderscore PROMISE, które jest wysyłane do klienta przed faktycznym przesłaniem całego strumienia.
 Jeśli klient zechce, to może odrzucić dany strumień wysyłając ramkę RST\textunderscore STREAM.
 
@@ -554,17 +565,6 @@ Możemy też porównać objętości oraz czasy przesyłania poszczególnych plik
 	\label{schematBasicTestH1}
 \end{figure}
 
-Wykres przedstawiony na schemacie \ref{schematTest1} ukazuje porównanie wyników w każdej z prób oraz wynik średni dla obu protokołów.
-
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.6]{\ImgPath/rys/test1.png}
-\end{center}
-	\caption{Wykres podsumowujący}
-	\label{schematTest1}
-\end{figure}
-
 \section{Porównanie prędkości przy bezpiecznym połączeniu HTTP/1.1}
 
 W tym teście dane przesyłane za pomocą protokołu HTTP/1.1 są zabezpieczone SSL.
@@ -584,21 +584,11 @@ Próba & HTTP/1.1 & HTTP/2 \\ \hline
 ŚREDNIA & 1.29s & 1.21s \\
 \end{tabular}
 
-W powyższym teście protkół HTTP/2 uzyskał wyniki lepsze średnio o 6\%.
-Na podstawie tego testu widzimy też, że w przypadku wykorzystania zabezpieczonego połączenia czasy dla HTTP/1.1 są minimalnie większe, niż bez SSL.
+Wyniki poniższego testu kolejny raz pokazują wyższość nowszej wersji protokołu HTTP.
+Jednakże różnica 6\% nie pozwala powiedzieć, że jest to ogromna różnica.
+Na podstawie tego testu widzimy też, że w przypadku wykorzystania zabezpieczonego połączenia czasy w przypadku HTTP/1.1 są minimalnie większe, niż bez wykorzystania tego protokołu.
 
-Wykres przedstawiony na schemacie \ref{schematTest2} ukazuje porównanie wyników w każdej z prób oraz wynik średni dla obu protokołów.
-
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.6]{\ImgPath/rys/test2.png}
-\end{center}
-	\caption{Wykres podsumowujący}
-	\label{schematTest2}
-\end{figure}
-
-\section{Porównanie prędkości z włączonym CACHE}
+\section{Porównanie prędkości dla HTTP/1.1 z włączonym CACHE}
 
 \begin{tabular}{c|c|c}
 Próba & HTTP/1.1 & HTTP/2 \\ \hline
@@ -642,51 +632,32 @@ Taka sytuacja ma miejsce, gdy wchodzimy na stronę kolejny raz.
 	\label{schematNoCacheExample}
 \end{figure}
 
-Wykres przedstawiony na schemacie \ref{schematTest3} ukazuje porównanie wyników w każdej z prób oraz wynik średni dla obu protokołów.
-
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.6]{\ImgPath/rys/test3.png}
-\end{center}
-	\caption{Wykres podsumowujący}
-	\label{schematTest3}
-\end{figure}
 
 \section{Porównanie prędkości przy wykorzystaniu Server Push}
 
 Ostatni test chciałem przeprowadzić dla zapytania wykorzystującego wprowadzony przez HTTP/2 server push, który, z punktu widzenia programisty aplikacji internetowych, wydaje się być najciekawszą nowością wprowadzoną do protokołu HTTP.
-Mądre wykorzystanie tej funkcji zdecydowanie ułatwi pracę każdemu twórcy.
+Mądre wykorzystanie tej funkcji zdecydowanie ułatwi pracę każdemu programiście.
 
-\begin{tabular}{c|c|c|c}
-Próba & HTTP/1.1 & HTTP/2 & HTTP/2 PUSH \\ \hline
-1 & 444ms & 454ms & 387ms \\
-2 & 456ms & 441ms & 372ms \\
-3 & 386ms & 515ms & 351ms \\
-4 & 380ms & 436ms & 471ms \\
-5 & 407ms & 342ms & 415ms \\
-6 & 404ms & 438ms & 420ms \\
-7 & 481ms & 385ms & 470ms \\
-8 & 471ms & 450ms & 253ms \\
-9 & 567ms & 481ms & 269ms \\
-10 & 418ms & 413ms & 409ms \\ \hline
-ŚREDNIA & 441ms & 436ms & 382ms \\
+\begin{tabular}{c|c|c}
+Próba & HTTP/1.1 & HTTP/2 \\ \hline
+1 & 454ms & 387ms \\
+2 & 441ms & 372ms \\
+3 & 515ms & 351ms \\
+4 & 436ms & 471ms \\
+5 & 342ms & 415ms \\
+6 & 438ms & 420ms \\
+7 & 385ms & 470ms \\
+8 & 450ms & 253ms \\
+9 & 481ms & 269ms \\
+10 & 413ms & 409ms \\ \hline
+ŚREDNIA & 436ms & 382ms \\
 \end{tabular}
 
-Wyniki przeprowadzonego testu pokazują, że server push jest nowością z dużym potencjałem na przyszłość.
+Wyniki przeprowadzonego testu pokazują, że server push jest nowością z największym potencjałem na przyszłość.
 Polepszenie wyników o około 14\% to dobra wróżba na przyszłość.
 Kiedy technologia się rozwinie i zacznie powstawać wiele aplikacji wykorzystujących server push zaczną powstawać nowe, coraz lepsze sposoby jego wykorzystania.
 
-Poniższe obrazki (\ref{schematNoPushExample11}, \ref{schematNoPushExample} i \ref{schematPushExample}) ukazują porównanie przykładowych zapytań z powyższego testu.
-
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.6]{\ImgPath/rys/noPushExample11.png}
-\end{center}
-	\caption{Przykład zapytania dla HTTP/1.1}
-	\label{schematNoPushExample11}
-\end{figure}
+Poniższe obrazki (\ref{schematNoPushExample} i \ref{schematPushExample}) ukazują przykładowe porównanie dwóch zapytań z powyższego testu.
 
 \begin{figure}[!htbp]
 	\begin{center}
@@ -706,41 +677,6 @@ Poniższe obrazki (\ref{schematNoPushExample11}, \ref{schematNoPushExample} i \r
 	\label{schematPushExample}
 \end{figure}
 
-Wykres przedstawiony na schemacie \ref{schematTest4} ukazuje porównanie wyników w każdej z prób oraz wynik średni dla wszystkich przypadków.
-
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.6]{\ImgPath/rys/test4.png}
-\end{center}
-	\caption{Wykres podsumowujący}
-	\label{schematTest4}
-\end{figure}
-
-\section{Kompatybilność popularnych przeglądarek internetowych z HTTP/2}
-
-Ważną rzeczą poza szybkością aplikacji jest również jej niezawodność oraz uniwersalność.
-Aby aplikacja była uniwersalna użytkownik musi mieć możliwość jej uruchomienia w różnych środowiskach.
-Dlatego uznałem za ważne, aby sprawdzić czy popularne przeglądarki wspierają protokół HTTP/2.
-Testy przegląderk Firefox, Chrome oraz Opera przeprowadziłem na Ubuntu 16.04.
-Mobilną wersję przeglądarki Safari sprawdziłem na telefonie iPhone 6 z wersją softu 10.2.
-Testy Edge zostały przeprowadzone na maszynie wirtualnej z zainstalowanym Windows 8.
-Wyniki moich badań przedstawiam w poniższej tabelii.
-
-\begin{tabular}{c|c|c|c|c|c|c}
-Lp & Firefox & Chrome & Opera & Safari & Internet Explorer & Edge \\ \hline
-1. & \cellcolor{green!50}50 & \cellcolor{green!50}55 & \cellcolor{green!50}42 & & & \cellcolor{green!50}14 \\
-
-2. & \cellcolor{green!50}49 & \cellcolor{green!50}54 & \cellcolor{green!50}41 & \cellcolor{green!50}10.2 & \cellcolor{red!50}11 & \cellcolor{green!50}13 \\
-
-3. & \cellcolor{green!50}48 & \cellcolor{green!50}53 & \cellcolor{green!50}40 & & & \cellcolor{green!50}12 \\
-\end{tabular}
-
-Jak widać protokół HTTP/2 jest w pełni wspierany przez najpopularniejsze przeglądarki internetowe w najnowszych wersjach.
-Daje nam to pewność, że aplikacja stworzona z wykorzystaniem tej technologii będzie sprawnie działać u większości użytkowników.
-Jak widać tylko najnowsza wersja przeglądarki Internet Explorer nie wspiera HTTP/2.
-Należy zaznaczyć, że ostatnia aktualizacja IE miała miejsce pod koniec roku 2015, więc nie jest to już wspierany produkt i większość użytkowników odchodzi od niego.
-
 \chapter{Wnioski}
 
 % co jeszcze moglem zrobic
@@ -748,10 +684,10 @@ Należy zaznaczyć, że ostatnia aktualizacja IE miała miejsce pod koniec roku 
 % testy z poziomu TCP
 % testy na wiekszych rzeczach
 
-Gdy tylko zobaczyłem informacje dotyczące najnowszego protokołu HTTP w wersji 2 bardzo się ucieszyłem.
-Po pierwsze w obecnych czasach, gdy technologia tak szybko porusza się do przodu, korzystanie z rozwiązań, które nie zmieniły się od ponad 15 latu wydaje się niewłaściwe.
-HTTP/1.1 coraz mocniej ogranicza możliwości programistów i nie pozwala rozsądnie i w pełni wykorzystać zasobów, którymi dzisiaj dysponujemy.
-Po przeczytaniu, że numer dwa przy wersji protokołu, to właściwie tylko informacja o tym, że nie jest on wstecznie kompatybilny zacząłem się zastanawiać czy nie jest to swego rodzaju uspokojenie pokładanych w tym protokole oczekiwań.
+Gdy tylko zobaczyłem informacje dotyczące najnowszej protokołu HTTP w wersji 2 bardzo się ucieszyłem.
+Po pierwsze w obecnych czasach, gdy technologia tak szybko porusza się do przodu, korzystanie z rozwiązań, które nie zmieniły się od ponad 15 latu wydaje się nieco śmieszne.
+HTTP/1.1 coraz mocniej ogranicza możliwości programistów i nie pozwala rozsądnie i w pełni wykorzystać możliwości, którymi dzisiaj dysponujemy.
+Po przeczytaniu informacji, że numer dwa przy wersji protokołu, to właściwie tylko informacja o tym, że nie jest on wstecznie kompatybilny zacząłem się zastanawiać czy nie jest to swego rodzaju uspokojenie pokładanych w tym protokole oczekiwań.
 Postanowiłem więc przeprowadzić testy, których wynikiem jest niniejsza praca.
 
 Tak jak wspominałem moje oczekiwania co do wydajności protokołu były bardzo duże i dlatego po zobaczeniu wyników nieco się zawiodłem.
@@ -772,28 +708,6 @@ Kolejny element, czyli kompresja nagłówków.
 Może nie jest on tak znaczący dla zasobów o bardzo dużej objętości.
 Możemy dojść do takiego wniosku na pierwszy rzut oka, jednak podsumowując powtarzającą się część nagłówków, widać, że ma to niemałe przełożenie na ilość przesyłanych danych.
 
-Na koniec chciałem przedstawić wykresy przedstawiające  mediane wyników pierwszych trzech testów (\ref{schematMedianaTests}) oraz oddzielnie dla ostatniego testu dotyczącego SERVER PUSH (\ref{schematMedianaTest4}).
-Należy pamiętać, że ostatni test został przeprowadzony na innym zestawie pobieranych danych.
-Co ciekawe, przeciętna wartość dla testu HTTP/2 bez SERVER PUSH jest niższa, niż z wykorzystaniem tej technologii.
-
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.6]{\ImgPath/rys/medianaTests.png}
-\end{center}
-	\caption{Mediany wyników trzech pierwszych testów}
-	\label{schematMedianaTests}
-\end{figure}
-
-\begin{figure}[!htbp]
-	\begin{center}
-\centering
-\includegraphics[scale=0.6]{\ImgPath/rys/medianaTest4.png}
-\end{center}
-	\caption{Mediany wyników testu SERVER PUSH}
-	\label{schematMedianaTest4}
-\end{figure}
-
 Jak widać chociaż na razie HTTP/2 lekko zawiódł moje oczekiwania, to na pewno nie oznacza, że jego wprowadzenie było niepotrzebne. Jestem świadomy, że przed wyciągnięciem takiego wniosku należałoby wykonać dużo bardziej dogłębne testy. Jest to mój cel na przyszłość.
 
 Chciałbym przede wszystkim dużo dokładniej przetestować możliwości Server Push oraz kompresji nagłówków. Można to osiągnąć poprzez znaczne rozbudowanie aplikacji tak, aby przypominała ona dużo bardziej dzisiejsze aplikacje, które są bardzo rozbudowane pod względem zasobów.
@@ -804,7 +718,7 @@ Chciałbym się przekonać, czy faktycznie zmiany wprowadzone przez HTTP/2 są n
 
 Podsumowując, przeprowadzone testy wskazują, że HTTP/2 ma bardzo duży potencjał na przyszłość.
 Na razie wyniki badań nie są powalające, ale może to również wynikać z jakości dostępnych narzędzi.
-Wraz z czasem poznamy lepiej nową technologię i będą się pojawiać biblioteki, które dużo lepiej zaczną wykorzystywać jej możliwości. Na tę chwilę ciekawym pomysłem może być śledzenie prac, które są wykonywane, aby oficjalnie wdrożyć ten protokół w node.js (ODNOŚNIK).
+Wraz z czasem poznamy lepiej nową technologię i będą się pojawiać biblioteki, które dużo lepiej zaczną wykorzystywać jej możliwości. Na razie ciekawym rozwiązaniem może być śledzenie prac, które są wykonywane, aby oficjalnie wdrożyć ten protokół w node.js (ODNOŚNIK).
 
 %-----------------
 % Dodatki 
@@ -815,16 +729,8 @@ Wraz z czasem poznamy lepiej nową technologię i będą się pojawiać bibliote
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
-\bibitem{RFC7540}{M. Belshe, R. Peon, M. Thomson, ,,Hypertext Transfer Protocol Version 2 (HTTP/2)``, 2015.\newline \url{https://tools.ietf.org/html/rfc7540}}
-\bibitem{webpack}{założenia webpack\newline \url{https://webpack.js.org/concepts/}}
-\bibitem{http2Fundamentals}{podstawy HTTP/2\newline \url{https://developers.google.com/web/fundamentals/performance/http2/}}
-\bibitem{mean}{Haviv A., ,,MEAN Web Development'', Birmingham 2014, ISBN 978-1-78398-328-5}
-\bibitem{connectionMng}{Totty B., Sayer M., Reddy S., Aggarwal A., Gourley D., ,,HTTP: The Definitive Guide``, 2002, rozdział 4}
-\bibitem{RFC2616}{R. Fielding, J. Gettys, J. Mogul, H. Frystyk, L. Masinter, P. Leach, T. Berners-Lee, ,,Hypertext Transfer Protocol -- HTTP/1.1``, 1999.\newline \url{https://tools.ietf.org/html/rfc2616}}
-\bibitem{hol}{I. Grigorik, ,,High Performance Browser Neworking``, 2013\newline rozdział: \url{https://hpbn.co/building-blocks-of-tcp/#head-of-line-blocking}}
-\bibitem{sprites}{R. Rendle, ,,Spriting with <img>``, 2015.\newline \url{https://css-tricks.com/spriting-img/}}
-\bibitem{domainSharding}{I. Grigorik, ,,High Performance Browser Neworking``, 2013\newline rozdział: \url{https://hpbn.co/http1x/#domain-sharding}}
-\bibitem{hpack}{R. Peon, H. Ruellan, ,,HPACK: Header Compression for HTTP/2``, 2015.\newline \url{https://tools.ietf.org/html/rfc7541}}
+\bibitem{RFC7540}{M. Belshe, BitGo, R. Peon, Google, Inc, M. Thomson, Ed. Mozilla, ,,Hypertext Transfer Protocol Version 2 (HTTP/2)``, 2015.\newline \url{https://tools.ietf.org/html/rfc7540}}
+\bibitem{webpack}{webpack concept\newline \url{https://webpack.js.org/concepts/}}
 \end{thebibliography}
 
 %\zakonczenie  % wklejenie recenzji i opinii

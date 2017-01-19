@@ -3,7 +3,7 @@
 \BOOKMARK [1][-]{section.2.1}{Historia}{chapter.2}% 3
 \BOOKMARK [1][-]{section.2.2}{Protok\363\233 binarny}{chapter.2}% 4
 \BOOKMARK [1][-]{section.2.3}{Multiplexing}{chapter.2}% 5
-\BOOKMARK [1][-]{section.2.4}{Prioretyzacja}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.4}{Pierwszenstwo}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.5}{Server push}{chapter.2}% 7
 \BOOKMARK [1][-]{section.2.6}{Kompresja nag\233\363wk\363w}{chapter.2}% 8
 \BOOKMARK [0][-]{chapter.3}{Budowa aplikacji}{}% 9
@@ -11,10 +11,11 @@
 \BOOKMARK [1][-]{section.3.2}{Server Push}{chapter.3}% 11
 \BOOKMARK [0][-]{chapter.4}{Testy}{}% 12
 \BOOKMARK [1][-]{section.4.1}{Chrome DevTools}{chapter.4}% 13
-\BOOKMARK [1][-]{section.4.2}{Przygotowanie test\363\234}{chapter.4}% 14
+\BOOKMARK [1][-]{section.4.2}{Przygotowanie test\363w}{chapter.4}% 14
 \BOOKMARK [1][-]{section.4.3}{Por\363wnanie predkosci protoko\233u HTTP/2 i HTTP/1.1}{chapter.4}% 15
 \BOOKMARK [1][-]{section.4.4}{Por\363wnanie predkosci przy bezpiecznym po\233aczeniu HTTP/1.1}{chapter.4}% 16
-\BOOKMARK [1][-]{section.4.5}{Por\363wnanie predkosci dla HTTP/1.1 z w\233aczononym CACHE}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.5}{Por\363wnanie predkosci z w\233aczonym CACHE}{chapter.4}% 17
 \BOOKMARK [1][-]{section.4.6}{Por\363wnanie predkosci przy wykorzystaniu Server Push}{chapter.4}% 18
-\BOOKMARK [0][-]{chapter.5}{Wnioski}{}% 19
-\BOOKMARK [0][-]{chapter*.4}{Bibliografia}{}% 20
+\BOOKMARK [1][-]{section.4.7}{Kompatybilnosc popularnych przegladarek internetowych z HTTP/2}{chapter.4}% 19
+\BOOKMARK [0][-]{chapter.5}{Wnioski}{}% 20
+\BOOKMARK [0][-]{chapter*.4}{Bibliografia}{}% 21
