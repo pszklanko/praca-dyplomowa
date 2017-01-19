@@ -142,7 +142,7 @@ Zdecydowałem się na to rozwiązanie z kilku powodów:
 
 Dodatkowo, poza narzędziami składającymi się na zestaw MEAN, wykorzystałem następujące biblioteki:
 \begin{enumerate}
-	\item node-spdy -- zewnętrzny moduł do node.js, który umożliwia tworzenie serwerów wspierających HTTP/2.
+	\item node-spdy -- zewnętrzny moduł do node.js, który umożliwia tworzenie serwerów wspierających HTTP/2 (repozytorium github: \cite{spdy}).
 	Jest on kompatybilny z biblioteką Express.js, którą wykorzystuję w swoim projekcie.
 	Dzięki temu modułowi możemy zaimplementować serwer HTTP/2 wraz z Server Push.
 	Pomimo, że nie jest to oficjalny moduł node.js, to trwające obecnie prace, które mają na celu wdrożenie HTTP/2 oficjalnie do node.js, bazują na tej bibliotece,
@@ -412,7 +412,7 @@ Widać tutaj jak dużo czasu trwa oczekiwanie na zasoby, które mogłyby zostać
 
 \section{Chrome DevTools}
 
-Do pomiaru prędkości oraz uzyskania innych ważnych informacji wykorzystałem narzędzie Chrome DevTools.
+Do pomiaru prędkości oraz uzyskania innych ważnych informacji wykorzystałem narzędzie Chrome DevTools (więcej informacji o tym narzędziu \cite{devtools}).
 Opiszę tutaj pokrótce co i jak mierzyłem za pomocą tego oprogramowania.
 
 Po uruchomieniu konsoli przeglądarki przechodzimy do zakładki Network i naszym oczom ukazuje się okno jak na rysunku \ref{schematDevops}.
@@ -615,7 +615,7 @@ Próba & HTTP/1.1 & HTTP/2 \\ \hline
 ŚREDNIA & 583ms & 524ms \\
 \end{tabular}
 
-Kolejny test, w którym nieznacznie wygrywa nowsza wersja protokołu -- około 11\%.
+Kolejny test pokazuje, że średnio czas ładowania strony z wykorzystaniem HTTP/2 jest około 11\% krótszy.
 Jak można było się spodziewać czasy z wykorzystaniem pamięci podręcznej przeglądarki będą znacznie mniejsze, niż gdy ta pamięć jest wyłączona.
 Pokazuje to jak ważnym elementem pracy twórcy aplikacji internetowych jest rozsądne zarządzanie zasobami, które mogę być przechowywane w pamięci podręcznej po stronie klienta i nie muszą one być za każdym razem wysyłane ponownie.
 
@@ -722,9 +722,9 @@ Wykres przedstawiony na schemacie \ref{schematTest4} ukazuje porównanie wynikó
 Ważną rzeczą poza szybkością aplikacji jest również jej niezawodność oraz uniwersalność.
 Aby aplikacja była uniwersalna użytkownik musi mieć możliwość jej uruchomienia w różnych środowiskach.
 Dlatego uznałem za ważne, aby sprawdzić czy popularne przeglądarki wspierają protokół HTTP/2.
-Testy przegląderk Firefox, Chrome oraz Opera przeprowadziłem na Ubuntu 16.04.
+Testy przegląderek Firefox, Chrome oraz Opera przeprowadziłem na Ubuntu 16.04.
 Mobilną wersję przeglądarki Safari sprawdziłem na telefonie iPhone 6 z wersją softu 10.2.
-Testy Edge zostały przeprowadzone na maszynie wirtualnej z zainstalowanym Windows 8.
+Testy Edge oraz Internet Explorer zostały przeprowadzone na maszynie wirtualnej z zainstalowanym Windows 8.
 Wyniki moich badań przedstawiam w poniższej tabelii.
 
 \begin{tabular}{c|c|c|c|c|c|c}
@@ -736,7 +736,7 @@ Lp & Firefox & Chrome & Opera & Safari & Internet Explorer & Edge \\ \hline
 3. & \cellcolor{green!50}48 & \cellcolor{green!50}53 & \cellcolor{green!50}40 & & & \cellcolor{green!50}12 \\
 \end{tabular}
 
-Jak widać protokół HTTP/2 jest w pełni wspierany przez najpopularniejsze przeglądarki internetowe w najnowszych wersjach.
+Jak widać protokół HTTP/2 jest prawie w pełni wspierany przez najpopularniejsze przeglądarki internetowe w najnowszych wersjach.
 Daje nam to pewność, że aplikacja stworzona z wykorzystaniem tej technologii będzie sprawnie działać u większości użytkowników.
 Jak widać tylko najnowsza wersja przeglądarki Internet Explorer nie wspiera HTTP/2.
 Należy zaznaczyć, że ostatnia aktualizacja IE miała miejsce pod koniec roku 2015, więc nie jest to już wspierany produkt i większość użytkowników odchodzi od niego.
@@ -754,15 +754,14 @@ HTTP/1.1 coraz mocniej ogranicza możliwości programistów i nie pozwala rozsą
 Po przeczytaniu, że numer dwa przy wersji protokołu, to właściwie tylko informacja o tym, że nie jest on wstecznie kompatybilny zacząłem się zastanawiać czy nie jest to swego rodzaju uspokojenie pokładanych w tym protokole oczekiwań.
 Postanowiłem więc przeprowadzić testy, których wynikiem jest niniejsza praca.
 
-Tak jak wspominałem moje oczekiwania co do wydajności protokołu były bardzo duże i dlatego po zobaczeniu wyników nieco się zawiodłem.
-Owszem, widać przyśpieszenie, ale nie jest one godne otrzymania numeru 2, który jednak na początku sugerował ogromną rewolucję.
-Wyniki badań szybkości, chociaż wypadały z korzyścią dla HTTP/2, nie są tak dobre, jak się spodziewałem.
+Patrząc na wyniki testów widać przyśpieszenie, względem starszej wersji protokołu.
+Pokazuje to, że wprowadzone udoskonalenia mogą w przyszłości przyczynić się do znacznego przyspieszenia aplikacji internetowych.
 
-Z drugiej strony protokół HTTP/2 to nie tylko szybkość, ale też jakość połączenia i jego bezpieczeństwo.
+Dodatkowo protokół HTTP/2 to nie tylko szybkość, ale też jakość połączenia i jego bezpieczeństwo.
 Bardzo dobrym krokiem jest wymuszanie na twórcach korzystanie z certyfikatów bezpieczeństwa.
 Na pewno sprawi to, że sieć będzie się stawać coraz bezpieczniejszym miejscem i o wiele trudniej będzie przestępcy wykorzystać zwykłego użytkownika.
 
-Wykorzystanie multiplexingu rozwiązało ostatecznie problem HOL blocking (ODNOSNIK), który w niektórych przypadkach potrafił bardzo mocno spowolnić działanie aplikacji. 
+Wykorzystanie multiplexingu rozwiązało ostatecznie problem HOL blocking, który w niektórych przypadkach potrafił bardzo mocno spowolnić działanie aplikacji. 
 Oczywiście były sposoby, żeby sobie z tym poradzić.
 Przykładem jest wykorzystywanie wielu połączeń TCP do przesyłania informacji równolegle.
 Takie rozwiązanie jednak znacznie bardziej obciąża serwer niepotrzebnymi prośbami o połączenie.
@@ -794,17 +793,16 @@ Co ciekawe, przeciętna wartość dla testu HTTP/2 bez SERVER PUSH jest niższa,
 	\label{schematMedianaTest4}
 \end{figure}
 
-Jak widać chociaż na razie HTTP/2 lekko zawiódł moje oczekiwania, to na pewno nie oznacza, że jego wprowadzenie było niepotrzebne. Jestem świadomy, że przed wyciągnięciem takiego wniosku należałoby wykonać dużo bardziej dogłębne testy. Jest to mój cel na przyszłość.
+Jak widać, chociaż HTTP/2 jest stosunkowo nową technologią, to jego potencjał w tworzeniu wydajnych aplikacji internetowych jest ogromny. Wyniki moich badań napawają pozytywnie na przyszłość. Warto obserwować dalszy rozwój bibliotek i technologii wykorzystujących ten protokół.
 
-Chciałbym przede wszystkim dużo dokładniej przetestować możliwości Server Push oraz kompresji nagłówków. Można to osiągnąć poprzez znaczne rozbudowanie aplikacji tak, aby przypominała ona dużo bardziej dzisiejsze aplikacje, które są bardzo rozbudowane pod względem zasobów.
+W przyszłości chciałbym przede wszystkim dużo dokładniej przetestować możliwości Server Push oraz kompresji nagłówków. Można to osiągnąć poprzez znaczne rozbudowanie aplikacji tak, aby lepiej przypominała ona dzisiejsze aplikacje, które są bardzo rozbudowane pod względem zasobów.
 
 Ciekawym badaniem mogłoby być również prześledzenie czasu, który jest wykorzystywany tylko i wyłącznie na nawiązanie połączenia TCP.
 Jak wspominałem protokół HTTP/1.1 nawiązuje kilka połączeń w ramach komunikacji klienta z serwerem.
 Chciałbym się przekonać, czy faktycznie zmiany wprowadzone przez HTTP/2 są na tym poziomie bardzo widoczne.
 
 Podsumowując, przeprowadzone testy wskazują, że HTTP/2 ma bardzo duży potencjał na przyszłość.
-Na razie wyniki badań nie są powalające, ale może to również wynikać z jakości dostępnych narzędzi.
-Wraz z czasem poznamy lepiej nową technologię i będą się pojawiać biblioteki, które dużo lepiej zaczną wykorzystywać jej możliwości. Na tę chwilę ciekawym pomysłem może być śledzenie prac, które są wykonywane, aby oficjalnie wdrożyć ten protokół w node.js (ODNOŚNIK).
+Wraz z czasem poznamy lepiej nową technologię i będą się pojawiać biblioteki, które dużo lepiej zaczną wykorzystywać jej możliwości. Na tę chwilę ciekawym pomysłem może być śledzenie prac, które są wykonywane, aby oficjalnie wdrożyć ten protokół w node.js (repozyrorium: \cite{nodeHttp2Impl}).
 
 %-----------------
 % Dodatki 
@@ -825,6 +823,9 @@ Wraz z czasem poznamy lepiej nową technologię i będą się pojawiać bibliote
 \bibitem{sprites}{R. Rendle, ,,Spriting with <img>``, 2015.\newline \url{https://css-tricks.com/spriting-img/}}
 \bibitem{domainSharding}{I. Grigorik, ,,High Performance Browser Neworking``, 2013\newline rozdział: \url{https://hpbn.co/http1x/#domain-sharding}}
 \bibitem{hpack}{R. Peon, H. Ruellan, ,,HPACK: Header Compression for HTTP/2``, 2015.\newline \url{https://tools.ietf.org/html/rfc7541}}
+\bibitem{spdy}{\url{https://github.com/indutny/node-spdy}}
+\bibitem{devtools}{\url{https://developer.chrome.com/devtools}}
+\bibitem{nodeHttp2Impl}{\url{https://github.com/nodejs/http2}}
 \end{thebibliography}
 
 %\zakonczenie  % wklejenie recenzji i opinii
