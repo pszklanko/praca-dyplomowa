@@ -32,7 +32,7 @@
 \citation{spdy}
 \citation{RFC7540}
 \citation{http2Fundamentals}
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}HTTP/2}{3}{chapter.2}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Opis wybranych element\IeC {\'o}w HTTP/2}{3}{chapter.2}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Historia}{3}{section.2.1}}
@@ -42,87 +42,110 @@
 \citation{hol}
 \citation{http2Fundamentals}
 \citation{http2Fundamentals}
-\citation{sprites}
-\citation{domainSharding}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Schemat ramki protoko\IeC {\l }u HTTP/2 (\IeC {\'z}r\IeC {\'o}d\IeC {\l }o: \cite  {http2Fundamentals})}}{4}{figure.2.1}}
 \newlabel{schematRamki}{{2.1}{4}{Schemat ramki protokołu HTTP/2 (źródło: \cite {http2Fundamentals})}{figure.2.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Multiplexing}{4}{section.2.3}}
 \newlabel{sectionMultiplexing}{{2.3}{4}{Multiplexing}{section.2.3}{}}
+\citation{sprites}
+\citation{domainSharding}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Schemat wykorzystania multiplexingu w HTTP/2 (\IeC {\'z}r\IeC {\'o}d\IeC {\l }o: \cite  {http2Fundamentals})}}{5}{figure.2.2}}
 \newlabel{schematMultiplexing}{{2.2}{5}{Schemat wykorzystania multiplexingu w HTTP/2 (źródło: \cite {http2Fundamentals})}{figure.2.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Pierwsze\IeC {\'n}stwo}{5}{section.2.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}Server push}{5}{section.2.5}}
-\newlabel{sectionServerPush}{{2.5}{5}{Server push}{section.2.5}{}}
 \citation{http2Fundamentals}
 \citation{hpack}
-\citation{http2Fundamentals}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Schemat Server push HTTP/2 (\IeC {\'z}r\IeC {\'o}d\IeC {\l }o: \cite  {http2Fundamentals})}}{6}{figure.2.3}}
-\newlabel{schematPush}{{2.3}{6}{Schemat Server push HTTP/2 (źródło: \cite {http2Fundamentals})}{figure.2.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.5}Server push}{6}{section.2.5}}
+\newlabel{sectionServerPush}{{2.5}{6}{Server push}{section.2.5}{}}
+\newlabel{push}{{2.1}{6}{Zasoby przesyłane z wykorzystaniem server push}{lstlisting.2.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.1}Zasoby przesy\IeC {\l }ane z wykorzystaniem server push}{6}{lstlisting.2.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.6}Kompresja nag\IeC {\l }\IeC {\'o}wk\IeC {\'o}w}{6}{section.2.6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Kompresja nag\IeC {\l }\IeC {\'o}wk\IeC {\'o}w w HTTP/2 (\IeC {\'z}r\IeC {\'o}d\IeC {\l }o: \cite  {http2Fundamentals})}}{7}{figure.2.4}}
-\newlabel{schematHeaderComp}{{2.4}{7}{Kompresja nagłówków w HTTP/2 (źródło: \cite {http2Fundamentals})}{figure.2.4}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Budowa aplikacji}{8}{chapter.3}}
+\citation{http2Fundamentals}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Schemat Server push HTTP/2 (\IeC {\'z}r\IeC {\'o}d\IeC {\l }o: \cite  {http2Fundamentals})}}{7}{figure.2.3}}
+\newlabel{schematPush}{{2.3}{7}{Schemat Server push HTTP/2 (źródło: \cite {http2Fundamentals})}{figure.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Kompresja nag\IeC {\l }\IeC {\'o}wk\IeC {\'o}w w HTTP/2 (\IeC {\'z}r\IeC {\'o}d\IeC {\l }o: \cite  {http2Fundamentals})}}{8}{figure.2.4}}
+\newlabel{schematHeaderComp}{{2.4}{8}{Kompresja nagłówków w HTTP/2 (źródło: \cite {http2Fundamentals})}{figure.2.4}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Budowa aplikacji testowej}{9}{chapter.3}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}node-spdy -- konfiguracja serwera}{8}{section.3.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Server Push}{9}{section.3.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Szczeg\IeC {\'o}\IeC {\l }y zapytania wys\IeC {\l }anego bez wykorzystania Server Push}}{11}{figure.3.1}}
-\newlabel{schematNoPushDetails}{{3.1}{11}{Szczegóły zapytania wysłanego bez wykorzystania Server Push}{figure.3.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Szczeg\IeC {\'o}\IeC {\l }y zapytania wys\IeC {\l }anego z wykorzystaniem Server Push}}{12}{figure.3.2}}
-\newlabel{schematPushDetails}{{3.2}{12}{Szczegóły zapytania wysłanego z wykorzystaniem Server Push}{figure.3.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}node-spdy -- konfiguracja serwera}{9}{section.3.1}}
+\citation{spdy}
+\newlabel{server}{{3.1}{10}{Konfiguracja serwera}{lstlisting.3.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}Konfiguracja serwera}{10}{lstlisting.3.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Server Push}{10}{section.3.2}}
+\newlabel{push}{{3.2}{11}{Konfiguracja server push}{lstlisting.3.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}Konfiguracja server push}{11}{lstlisting.3.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Szczeg\IeC {\'o}\IeC {\l }y zapytania wys\IeC {\l }anego bez wykorzystania Server Push}}{13}{figure.3.1}}
+\newlabel{schematNoPushDetails}{{3.1}{13}{Szczegóły zapytania wysłanego bez wykorzystania Server Push}{figure.3.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Szczeg\IeC {\'o}\IeC {\l }y zapytania wys\IeC {\l }anego z wykorzystaniem Server Push}}{13}{figure.3.2}}
+\newlabel{schematPushDetails}{{3.2}{13}{Szczegóły zapytania wysłanego z wykorzystaniem Server Push}{figure.3.2}{}}
 \citation{devtools}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Testy}{13}{chapter.4}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Testy}{14}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Chrome DevTools}{13}{section.4.1}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Wygl\IeC {\k a}d okna Chrome DevTools}}{14}{figure.4.1}}
-\newlabel{schematDevops}{{4.1}{14}{Wygląd okna Chrome DevTools}{figure.4.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Chrome DevTools}{14}{section.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Wygl\IeC {\k a}d okna Chrome DevTools}}{15}{figure.4.1}}
+\newlabel{schematDevops}{{4.1}{15}{Wygląd okna Chrome DevTools}{figure.4.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Szczeg\IeC {\'o}\IeC {\l }owe informacje na temat czasu zapytania}}{15}{figure.4.2}}
 \newlabel{schematResourceTiming}{{4.2}{15}{Szczegółowe informacje na temat czasu zapytania}{figure.4.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Przygotowanie test\IeC {\'o}w}{15}{section.4.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Dow\IeC {\'o}d dzia\IeC {\l }ania protoko\IeC {\l }u HTTP/2}}{15}{figure.4.3}}
-\newlabel{schematWorkingExample}{{4.3}{15}{Dowód działania protokołu HTTP/2}{figure.4.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Przyk\IeC {\l }adowe linia czasu dla zapyta\IeC {\'n} wykonanych w HTTP/1.1}}{16}{figure.4.4}}
-\newlabel{schematWorkingExampleH1}{{4.4}{16}{Przykładowe linia czasu dla zapytań wykonanych w HTTP/1.1}{figure.4.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Pusta odpowied\IeC {\'z} w HTTP/2}}{16}{figure.4.5}}
-\newlabel{schematEmptyRes}{{4.5}{16}{Pusta odpowiedź w HTTP/2}{figure.4.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Pusta odpowied\IeC {\'z} w HTTP/1.1}}{16}{figure.4.6}}
-\newlabel{schematEmptyResH1}{{4.6}{16}{Pusta odpowiedź w HTTP/1.1}{figure.4.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci protoko\IeC {\l }u HTTP/2 i HTTP/1.1}{17}{section.4.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy bezpiecznym po\IeC {\l }\IeC {\k a}czeniu HTTP/1.1}{17}{section.4.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Test dla HTTP/2}}{18}{figure.4.7}}
-\newlabel{schematBasicTest}{{4.7}{18}{Test dla HTTP/2}{figure.4.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Test dla HTTP/1.1}}{19}{figure.4.8}}
-\newlabel{schematBasicTestH1}{{4.8}{19}{Test dla HTTP/1.1}{figure.4.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Wykres podsumowuj\IeC {\k a}cy}}{19}{figure.4.9}}
-\newlabel{schematTest1}{{4.9}{19}{Wykres podsumowujący}{figure.4.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces Wykres podsumowuj\IeC {\k a}cy}}{20}{figure.4.10}}
-\newlabel{schematTest2}{{4.10}{20}{Wykres podsumowujący}{figure.4.10}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci z w\IeC {\l }\IeC {\k a}czonym CACHE}{21}{section.4.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy wykorzystaniu Server Push}{21}{section.4.6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces Przyk\IeC {\l }ad zapytania z wykorzystaniem CACHE}}{22}{figure.4.11}}
-\newlabel{schematCacheExample}{{4.11}{22}{Przykład zapytania z wykorzystaniem CACHE}{figure.4.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces Przyk\IeC {\l }ad zapytania bez wykorzystania CACHE}}{23}{figure.4.12}}
-\newlabel{schematNoCacheExample}{{4.12}{23}{Przykład zapytania bez wykorzystania CACHE}{figure.4.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}\IeC {\'S}rodowisko testowe}{16}{section.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces G\IeC {\l }\IeC {\'o}wne okno aplikacji LubimyS\IeC {\l }ucha\IeC {\'c}}}{16}{figure.4.3}}
+\newlabel{aplikacjaMain}{{4.3}{16}{Główne okno aplikacji LubimySłuchać}{figure.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Widok listy album\IeC {\'o}w po wprowadzeniu fragmentu nazwy poszukiwanego albumu}}{17}{figure.4.4}}
+\newlabel{aplikacjaSearch}{{4.4}{17}{Widok listy albumów po wprowadzeniu fragmentu nazwy poszukiwanego albumu}{figure.4.4}{}}
+\newlabel{filter1}{{4.1}{17}{Kod filtra w pasku nawigacyjnym aplikacji}{lstlisting.4.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}Kod filtra w pasku nawigacyjnym aplikacji}{17}{lstlisting.4.1}}
+\newlabel{filter2}{{4.2}{17}{Kod odpowiedzialny za wyświetlanie albumów}{lstlisting.4.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.2}Kod odpowiedzialny za wy\IeC {\'s}wietlanie album\IeC {\'o}w}{17}{lstlisting.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Widok aplikacji po wprowadzeniu danych nowego albumu i klikni\IeC {\k e}ciu przycisku OK}}{18}{figure.4.5}}
+\newlabel{aplikacjaAdd}{{4.5}{18}{Widok aplikacji po wprowadzeniu danych nowego albumu i kliknięciu przycisku OK}{figure.4.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Przygotowanie test\IeC {\'o}w}{18}{section.4.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Widok aplikacji po udanym wprowadzeniu nazwy oraz wykonawcy albumu}}{19}{figure.4.6}}
+\newlabel{aplikacjaAdded}{{4.6}{19}{Widok aplikacji po udanym wprowadzeniu nazwy oraz wykonawcy albumu}{figure.4.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Dow\IeC {\'o}d dzia\IeC {\l }ania protoko\IeC {\l }u HTTP/2}}{19}{figure.4.7}}
+\newlabel{schematWorkingExample}{{4.7}{19}{Dowód działania protokołu HTTP/2}{figure.4.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Przyk\IeC {\l }adowe linia czasu dla zapyta\IeC {\'n} wykonanych w HTTP/1.1}}{20}{figure.4.8}}
+\newlabel{schematWorkingExampleH1}{{4.8}{20}{Przykładowe linia czasu dla zapytań wykonanych w HTTP/1.1}{figure.4.8}{}}
+\newlabel{empty}{{4.3}{20}{Wygląd funkcji wykonywanej po wykonaniu zapytania \texttt {GET} na adres \texttt {/empty}}{lstlisting.4.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.3}Wygl\IeC {\k a}d funkcji wykonywanej po wykonaniu zapytania \texttt  {GET} na adres \texttt  {/empty}}{20}{lstlisting.4.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Pusta odpowied\IeC {\'z} w HTTP/2}}{21}{figure.4.9}}
+\newlabel{schematEmptyRes}{{4.9}{21}{Pusta odpowiedź w HTTP/2}{figure.4.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces Pusta odpowied\IeC {\'z} w HTTP/1.1}}{21}{figure.4.10}}
+\newlabel{schematEmptyResH1}{{4.10}{21}{Pusta odpowiedź w HTTP/1.1}{figure.4.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci protoko\IeC {\l }u HTTP/2 i HTTP/1.1}{21}{section.4.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces Czas \IeC {\l }adowania strony dla HTTP/2}}{22}{figure.4.11}}
+\newlabel{schematBasicTest}{{4.11}{22}{Czas ładowania strony dla HTTP/2}{figure.4.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy bezpiecznym po\IeC {\l }\IeC {\k a}czeniu HTTP/1.1}{22}{section.4.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces Czas \IeC {\l }adowania strony dla HTTP/1.1 bez SSL}}{23}{figure.4.12}}
+\newlabel{schematBasicTestH1}{{4.12}{23}{Czas ładowania strony dla HTTP/1.1 bez SSL}{figure.4.12}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces Wykres podsumowuj\IeC {\k a}cy}}{23}{figure.4.13}}
-\newlabel{schematTest3}{{4.13}{23}{Wykres podsumowujący}{figure.4.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Kompatybilno\IeC {\'s}\IeC {\'c} popularnych przegl\IeC {\k a}darek internetowych z HTTP/2}{24}{section.4.7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces Przyk\IeC {\l }ad zapytania dla HTTP/1.1}}{25}{figure.4.14}}
-\newlabel{schematNoPushExample11}{{4.14}{25}{Przykład zapytania dla HTTP/1.1}{figure.4.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces Przyk\IeC {\l }ad zapytania bez wykorzystania Server Push}}{26}{figure.4.15}}
-\newlabel{schematNoPushExample}{{4.15}{26}{Przykład zapytania bez wykorzystania Server Push}{figure.4.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces Przyk\IeC {\l }ad zapytania wykorzystuj\IeC {\k a}cego Server Push}}{27}{figure.4.16}}
-\newlabel{schematPushExample}{{4.16}{27}{Przykład zapytania wykorzystującego Server Push}{figure.4.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces Wykres podsumowuj\IeC {\k a}cy}}{27}{figure.4.17}}
-\newlabel{schematTest4}{{4.17}{27}{Wykres podsumowujący}{figure.4.17}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Wnioski}{29}{chapter.5}}
+\newlabel{schematTest1}{{4.13}{23}{Wykres podsumowujący}{figure.4.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces Por\IeC {\'o}wnanie czas\IeC {\'o}w pobierania zasob\IeC {\'o}w w kolejnych pr\IeC {\'o}bach}}{24}{figure.4.14}}
+\newlabel{schematTest2}{{4.14}{24}{Porównanie czasów pobierania zasobów w kolejnych próbach}{figure.4.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci z w\IeC {\l }\IeC {\k a}czonym CACHE}{25}{section.4.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy wykorzystaniu Server Push}{25}{section.4.7}}
+\newlabel{pushSection}{{4.7}{25}{Porównanie prędkości przy wykorzystaniu Server Push}{section.4.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces Przyk\IeC {\l }ad zapytania z wykorzystaniem kieszeniowania}}{26}{figure.4.15}}
+\newlabel{schematCacheExample}{{4.15}{26}{Przykład zapytania z wykorzystaniem kieszeniowania}{figure.4.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces Przyk\IeC {\l }ad zapytania bez wykorzystania kieszeniowania}}{27}{figure.4.16}}
+\newlabel{schematNoCacheExample}{{4.16}{27}{Przykład zapytania bez wykorzystania kieszeniowania}{figure.4.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces Czasy pobierania zasob\IeC {\'o}w z wykorzystaniem kieszeniowania w kolejnych pr\IeC {\'o}bach}}{27}{figure.4.17}}
+\newlabel{schematTest3}{{4.17}{27}{Czasy pobierania zasobów z wykorzystaniem kieszeniowania w kolejnych próbach}{figure.4.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.18}{\ignorespaces Przyk\IeC {\l }ad zapytania dla HTTP/1.1}}{28}{figure.4.18}}
+\newlabel{schematNoPushExample11}{{4.18}{28}{Przykład zapytania dla HTTP/1.1}{figure.4.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.19}{\ignorespaces Przyk\IeC {\l }ad zapytania bez wykorzystania Server Push}}{29}{figure.4.19}}
+\newlabel{schematNoPushExample}{{4.19}{29}{Przykład zapytania bez wykorzystania Server Push}{figure.4.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.20}{\ignorespaces Przyk\IeC {\l }ad zapytania wykorzystuj\IeC {\k a}cego Server Push}}{30}{figure.4.20}}
+\newlabel{schematPushExample}{{4.20}{30}{Przykład zapytania wykorzystującego Server Push}{figure.4.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.21}{\ignorespaces Wykres podsumowuj\IeC {\k a}cy}}{30}{figure.4.21}}
+\newlabel{schematTest4}{{4.21}{30}{Wykres podsumowujący}{figure.4.21}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.8}Kompatybilno\IeC {\'s}\IeC {\'c} popularnych przegl\IeC {\k a}darek internetowych z HTTP/2}{31}{section.4.8}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Wnioski}{32}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \citation{nodeHttp2Impl}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Mediany wynik\IeC {\'o}w trzech pierwszych test\IeC {\'o}w}}{30}{figure.5.1}}
-\newlabel{schematMedianaTests}{{5.1}{30}{Mediany wyników trzech pierwszych testów}{figure.5.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Mediany wynik\IeC {\'o}w testu SERVER PUSH}}{31}{figure.5.2}}
-\newlabel{schematMedianaTest4}{{5.2}{31}{Mediany wyników testu SERVER PUSH}{figure.5.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Mediany wynik\IeC {\'o}w trzech pierwszych test\IeC {\'o}w}}{33}{figure.5.1}}
+\newlabel{schematMedianaTests}{{5.1}{33}{Mediany wyników trzech pierwszych testów}{figure.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Mediany wynik\IeC {\'o}w testu SERVER PUSH}}{34}{figure.5.2}}
+\newlabel{schematMedianaTest4}{{5.2}{34}{Mediany wyników testu SERVER PUSH}{figure.5.2}{}}
 \bibcite{RFC7540}{1}
 \bibcite{webpack}{2}
 \bibcite{http2Fundamentals}{3}
@@ -135,5 +158,5 @@
 \bibcite{hpack}{10}
 \bibcite{spdy}{11}
 \bibcite{devtools}{12}
-\@writefile{toc}{\contentsline {chapter}{Bibliografia}{32}{chapter*.4}}
+\@writefile{toc}{\contentsline {chapter}{Bibliografia}{35}{chapter*.4}}
 \bibcite{nodeHttp2Impl}{13}
