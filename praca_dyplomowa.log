@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.21)  30 JAN 2017 00:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.11.21)  31 JAN 2017 22:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -819,20 +819,27 @@ f
 
 pdfTeX warning: pdflatex (file ./logoWE.pdf): PDF inclusion: multiple pdfs with
  page group included in a single page
->]) [2]
+>]
+Overfull \hbox (5.48056pt too wide) in paragraph at lines 8--24
+\T1/cmr/m/n/12 które nie byªy znane w po-przed-niej wer-sji, a s¡ klu-czo-wym e
+le-men-tem HTTP/2
+ []
+
+[2]) [3] [4
+
+]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 96.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 96.
- [3
-
-
-] [4
+ [5
 
 ]
-(./praca_dyplomowa.toc
+[6
+
+] (./praca_dyplomowa.toc
 Overfull \hbox (19.27916pt too wide) in paragraph at lines 21--21
  [][] [][]\T1/cmr/m/n/12 Kompatybilno±¢ po-pu-lar-nych prze-gl¡-da-rek in-ter-n
 e-to-wych z HTTP/2[] [][]  
@@ -867,7 +874,7 @@ Overfull \hbox (6.88841pt too wide) in paragraph at lines 145--149
 
 [2]
 Rozdzia\l  2.
-<./rys/ramka.png, id=183, 408.727pt x 209.583pt>
+<./rys/ramka.png, id=189, 408.727pt x 209.583pt>
 File: ./rys/ramka.png Graphic file (type png)
  <use ./rys/ramka.png>
 Package pdftex.def Info: ./rys/ramka.png used on input line 177.
@@ -879,7 +886,7 @@ Overfull \hbox (18.726pt too wide) in paragraph at lines 177--178
 
 [3
 
-] <./rys/multiplexing.png, id=193, 562.1pt x 154.979pt>
+] <./rys/multiplexing.png, id=199, 562.1pt x 154.979pt>
 File: ./rys/multiplexing.png Graphic file (type png)
 
 <use ./rys/multiplexing.png>
@@ -891,7 +898,7 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 241.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<./rys/push.png, id=217, 653.642pt x 254.551pt>
+<./rys/push.png, id=224, 653.642pt x 254.551pt>
 File: ./rys/push.png Graphic file (type png)
  <use ./rys/push.png>
 Package pdftex.def Info: ./rys/push.png used on input line 254.
@@ -901,7 +908,7 @@ Overfull \hbox (2.18822pt too wide) in paragraph at lines 254--255
  [] 
  []
 
-[6] <./rys/headercomp.png, id=235, 490.633pt x 412.742pt>
+[6] <./rys/headercomp.png, id=242, 490.633pt x 412.742pt>
 File: ./rys/headercomp.png Graphic file (type png)
 
 <use ./rys/headercomp.png>
@@ -911,7 +918,7 @@ Package pdftex.def Info: ./rys/headercomp.png used on input line 272.
 Rozdzia\l  3.
 [9
 
-] [10] [11] <./rys/noPushDetails.png, id=325, 749.80125pt x 268.00125pt>
+] [10] [11] <./rys/noPushDetails.png, id=332, 749.80125pt x 268.00125pt>
 File: ./rys/noPushDetails.png Graphic file (type png)
 
 <use ./rys/noPushDetails.png>
@@ -922,7 +929,7 @@ Overfull \hbox (59.88422pt too wide) in paragraph at lines 418--419
  [] 
  []
 
-<./rys/pushDetails.png, id=326, 755.82375pt x 260.975pt>
+<./rys/pushDetails.png, id=333, 755.82375pt x 260.975pt>
 File: ./rys/pushDetails.png Graphic file (type png)
 
 <use ./rys/pushDetails.png>
@@ -936,7 +943,7 @@ Overfull \hbox (63.49774pt too wide) in paragraph at lines 427--428
 [12] [13 <./rys/noPushDetails.png (PNG copy)> <./rys/pushDetails.png (PNG copy)
 >]
 Rozdzia\l  4.
-<./rys/devops.png, id=350, 700.86844pt x 437.38406pt>
+<./rys/devops.png, id=356, 700.86844pt x 437.38406pt>
 File: ./rys/devops.png Graphic file (type png)
  <use ./rys/devops.png>
 Package pdftex.def Info: ./rys/devops.png used on input line 445.
@@ -946,7 +953,7 @@ Overfull \hbox (30.5243pt too wide) in paragraph at lines 445--446
  [] 
  []
 
-<./rys/resource-timing-data.png, id=352, 388.45125pt x 233.87375pt>
+<./rys/resource-timing-data.png, id=358, 388.45125pt x 233.87375pt>
 File: ./rys/resource-timing-data.png Graphic file (type png)
 
 <use ./rys/resource-timing-data.png>
@@ -956,14 +963,14 @@ Package pdftex.def Info: ./rys/resource-timing-data.png used on input line 466.
  [14
 
 ] [15 <./rys/devops.png (PNG copy)> <./rys/resource-timing-data.png>]
-<./rys/aplikacjaMain.png, id=371, 863.47594pt x 423.08063pt>
+<./rys/aplikacjaMain.png, id=377, 863.47594pt x 423.08063pt>
 File: ./rys/aplikacjaMain.png Graphic file (type png)
 
 <use ./rys/aplikacjaMain.png>
 Package pdftex.def Info: ./rys/aplikacjaMain.png used on input line 492.
 (pdftex.def)             Requested size: 345.38426pt x 169.22925pt.
 
-<./rys/aplikacjaSearch.png, id=373, 867.99281pt x 420.82219pt>
+<./rys/aplikacjaSearch.png, id=379, 867.99281pt x 420.82219pt>
 File: ./rys/aplikacjaSearch.png Graphic file (type png)
 
 <use ./rys/aplikacjaSearch.png>
@@ -971,204 +978,238 @@ Package pdftex.def Info: ./rys/aplikacjaSearch.png used on input line 504.
 (pdftex.def)             Requested size: 347.19098pt x 168.32588pt.
  [16 <./rys/aplikacjaMain.png (PNG copy)>]
 [17 <./rys/aplikacjaSearch.png (PNG copy)>]
-<./rys/aplikacjaAdd.png, id=407, 867.99281pt x 441.14813pt>
+<./rys/aplikacjaAdd.png, id=416, 867.99281pt x 441.14813pt>
 File: ./rys/aplikacjaAdd.png Graphic file (type png)
 
 <use ./rys/aplikacjaAdd.png>
-Package pdftex.def Info: ./rys/aplikacjaAdd.png used on input line 544.
+Package pdftex.def Info: ./rys/aplikacjaAdd.png used on input line 577.
 (pdftex.def)             Requested size: 347.19098pt x 176.45612pt.
-
-<./rys/aplikacjaAdded.png, id=409, 861.9703pt x 589.4522pt>
+ [18]
+<./rys/aplikacjaAdded.png, id=451, 861.9703pt x 589.4522pt>
 File: ./rys/aplikacjaAdded.png Graphic file (type png)
 
 <use ./rys/aplikacjaAdded.png>
-Package pdftex.def Info: ./rys/aplikacjaAdded.png used on input line 555.
+Package pdftex.def Info: ./rys/aplikacjaAdded.png used on input line 588.
 (pdftex.def)             Requested size: 344.78201pt x 235.7767pt.
 
-<./rys/workingExample.png, id=411, 560.0925pt x 231.86626pt>
+<./rys/aplikacjaEdit.png, id=453, 1165.35374pt x 797.98125pt>
+File: ./rys/aplikacjaEdit.png Graphic file (type png)
+
+<use ./rys/aplikacjaEdit.png>
+Package pdftex.def Info: ./rys/aplikacjaEdit.png used on input line 599.
+(pdftex.def)             Requested size: 349.60883pt x 239.39621pt.
+
+<./rys/aplikacjaDelete.png, id=455, 870.25125pt x 613.54219pt>
+File: ./rys/aplikacjaDelete.png Graphic file (type png)
+
+<use ./rys/aplikacjaDelete.png>
+Package pdftex.def Info: ./rys/aplikacjaDelete.png used on input line 611.
+(pdftex.def)             Requested size: 348.09433pt x 245.41252pt.
+ [19 <./rys/aplikacjaAdd.png (PNG copy)>]
+[20 <./rys/aplikacjaAdded.png (PNG copy)> <./rys/aplikacjaEdit.png (PNG copy)>]
+
+LaTeX Warning: Reference `remove2' on page 21 undefined on input line 632.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21 <./rys/aplikacjaDelete.png (PNG copy)>]
+<./rys/workingExample.png, id=494, 560.0925pt x 231.86626pt>
 File: ./rys/workingExample.png Graphic file (type png)
 
 <use ./rys/workingExample.png>
-Package pdftex.def Info: ./rys/workingExample.png used on input line 568.
+Package pdftex.def Info: ./rys/workingExample.png used on input line 650.
 (pdftex.def)             Requested size: 336.05809pt x 139.12082pt.
- [18 <./rys/aplikacjaAdd.png (PNG copy)>]
-[19 <./rys/aplikacjaAdded.png (PNG copy)> <./rys/workingExample.png>]
-<./rys/workingExampleH1.png, id=433, 560.8453pt x 230.36063pt>
+
+<./rys/workingExampleH1.png, id=498, 560.8453pt x 230.36063pt>
 File: ./rys/workingExampleH1.png Graphic file (type png)
 
 <use ./rys/workingExampleH1.png>
-Package pdftex.def Info: ./rys/workingExampleH1.png used on input line 582.
+Package pdftex.def Info: ./rys/workingExampleH1.png used on input line 664.
 (pdftex.def)             Requested size: 336.50978pt x 138.21742pt.
-
-<./rys/emptyRes.png, id=437, 414.79968pt x 41.4047pt>
+ [22 <./rys/workingExample.png> <./rys/workingExampleH1.png (PNG copy)>]
+<./rys/emptyRes.png, id=509, 414.79968pt x 41.4047pt>
 File: ./rys/emptyRes.png Graphic file (type png)
  <use ./rys/emptyRes.png>
-Package pdftex.def Info: ./rys/emptyRes.png used on input line 609.
+Package pdftex.def Info: ./rys/emptyRes.png used on input line 691.
 (pdftex.def)             Requested size: 248.88173pt x 24.84299pt.
 
-<./rys/emptyResH1.png, id=438, 432.11438pt x 41.4047pt>
+<./rys/emptyResH1.png, id=510, 432.11438pt x 41.4047pt>
 File: ./rys/emptyResH1.png Graphic file (type png)
 
 <use ./rys/emptyResH1.png>
-Package pdftex.def Info: ./rys/emptyResH1.png used on input line 618.
+Package pdftex.def Info: ./rys/emptyResH1.png used on input line 700.
 (pdftex.def)             Requested size: 259.27061pt x 24.84299pt.
- [20 <./rys/workingExampleH1.png (PNG copy)>]
-Overfull \hbox (7.7992pt too wide) in paragraph at lines 651--655
+
+Underfull \vbox (badness 2393) has occurred while \output is active []
+
+ [23 <./rys/emptyRes.png (PNG copy)> <./rys/emptyResH1.png (PNG copy)>]
+Overfull \hbox (7.7992pt too wide) in paragraph at lines 733--737
 []\T1/cmr/m/n/12 Tabela uka-zuje wy-niki wy-ko-na-nych po-mia-rów. Jak wi-da¢ p
 ro-to-kóª HTTP/2
  []
 
-[21 <./rys/emptyRes.png (PNG copy)> <./rys/emptyResH1.png (PNG copy)>]
-<./rys/basicTest.png, id=457, 557.83406pt x 458.46281pt>
+<./rys/basicTest.png, id=526, 557.83406pt x 458.46281pt>
 File: ./rys/basicTest.png Graphic file (type png)
 
 <use ./rys/basicTest.png>
-Package pdftex.def Info: ./rys/basicTest.png used on input line 663.
+Package pdftex.def Info: ./rys/basicTest.png used on input line 745.
 (pdftex.def)             Requested size: 334.703pt x 275.0798pt.
 
-<./rys/basicTestH1.png, id=458, 558.58687pt x 457.71pt>
+<./rys/basicTestH1.png, id=527, 558.58687pt x 457.71pt>
 File: ./rys/basicTestH1.png Graphic file (type png)
 
 <use ./rys/basicTestH1.png>
-Package pdftex.def Info: ./rys/basicTestH1.png used on input line 672.
+Package pdftex.def Info: ./rys/basicTestH1.png used on input line 754.
 (pdftex.def)             Requested size: 335.15471pt x 274.62813pt.
 
-<./rys/test1.png, id=460, 579.16376pt x 328.22626pt>
+<./rys/test1.png, id=529, 579.16376pt x 328.22626pt>
 File: ./rys/test1.png Graphic file (type png)
  <use ./rys/test1.png>
-Package pdftex.def Info: ./rys/test1.png used on input line 683.
+Package pdftex.def Info: ./rys/test1.png used on input line 765.
 (pdftex.def)             Requested size: 347.50093pt x 196.93727pt.
 
-Overfull \hbox (5.99458pt too wide) in paragraph at lines 689--689
+Overfull \hbox (5.99458pt too wide) in paragraph at lines 771--771
 []\T1/cmr/bx/n/17.28 Porównanie pr¦d-ko-±ci przy bez-piecz-nym po-
- []
-
-[22 <./rys/basicTest.png (PNG copy)>] [23 <./rys/basicTestH1.png (PNG copy)> <.
-/rys/test1.png (PNG copy)>]
-<./rys/test2.png, id=473, 573.14125pt x 323.2075pt>
-File: ./rys/test2.png Graphic file (type png)
- <use ./rys/test2.png>
-Package pdftex.def Info: ./rys/test2.png used on input line 716.
-(pdftex.def)             Requested size: 343.8874pt x 193.926pt.
-
-Overfull \hbox (5.91951pt too wide) in paragraph at lines 722--722
-[]\T1/cmr/bx/n/17.28 Porównanie pr¦d-ko-±ci z wª¡-czo-nym CA-CHE 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [24 <./rys/test2.png (PNG copy)>]
-<./rys/cacheExample.png, id=482, 513.41812pt x 460.72125pt>
+ [24]
+[25 <./rys/basicTest.png (PNG copy)>] [26 <./rys/basicTestH1.png (PNG copy)> <.
+/rys/test1.png (PNG copy)>]
+<./rys/test2.png, id=546, 573.14125pt x 323.2075pt>
+File: ./rys/test2.png Graphic file (type png)
+ <use ./rys/test2.png>
+Package pdftex.def Info: ./rys/test2.png used on input line 798.
+(pdftex.def)             Requested size: 343.8874pt x 193.926pt.
+
+Overfull \hbox (5.91951pt too wide) in paragraph at lines 804--804
+[]\T1/cmr/bx/n/17.28 Porównanie pr¦d-ko-±ci z wª¡-czo-nym CA-CHE 
+ []
+
+[27 <./rys/test2.png (PNG copy)>]
+<./rys/cacheExample.png, id=555, 513.41812pt x 460.72125pt>
 File: ./rys/cacheExample.png Graphic file (type png)
 
 <use ./rys/cacheExample.png>
-Package pdftex.def Info: ./rys/cacheExample.png used on input line 752.
+Package pdftex.def Info: ./rys/cacheExample.png used on input line 834.
 (pdftex.def)             Requested size: 308.05324pt x 276.43488pt.
 
-<./rys/noCacheExample.png, id=483, 559.33969pt x 459.21562pt>
+<./rys/noCacheExample.png, id=556, 559.33969pt x 459.21562pt>
 File: ./rys/noCacheExample.png Graphic file (type png)
 
 <use ./rys/noCacheExample.png>
-Package pdftex.def Info: ./rys/noCacheExample.png used on input line 761.
+Package pdftex.def Info: ./rys/noCacheExample.png used on input line 843.
 (pdftex.def)             Requested size: 335.6064pt x 275.5315pt.
 
-<./rys/test3.png, id=485, 570.13pt x 324.21124pt>
+<./rys/test3.png, id=558, 570.13pt x 324.21124pt>
 File: ./rys/test3.png Graphic file (type png)
  <use ./rys/test3.png>
-Package pdftex.def Info: ./rys/test3.png used on input line 772.
+Package pdftex.def Info: ./rys/test3.png used on input line 854.
 (pdftex.def)             Requested size: 342.08064pt x 194.52824pt.
 
-Overfull \hbox (5.06653pt too wide) in paragraph at lines 781--782
+Overfull \hbox (5.06653pt too wide) in paragraph at lines 863--864
 []\T1/cmr/m/n/12 Ostatni test chcia-ªem prze-pro-wa-dzi¢ dla za-py-ta-nia wy-ko
 -rzy-stu-j¡-cego wpro-
  []
 
-[25] [26 <./rys/cacheExample.png (PNG copy)>] [27 <./rys/noCacheExample.png (PN
+[28] [29 <./rys/cacheExample.png (PNG copy)>] [30 <./rys/noCacheExample.png (PN
 G copy)> <./rys/test3.png (PNG copy)>]
-<./rys/noPushExample11.png, id=505, 424.58624pt x 440.39531pt>
+<./rys/noPushExample11.png, id=578, 424.58624pt x 440.39531pt>
 File: ./rys/noPushExample11.png Graphic file (type png)
 
 <use ./rys/noPushExample11.png>
-Package pdftex.def Info: ./rys/noPushExample11.png used on input line 803.
+Package pdftex.def Info: ./rys/noPushExample11.png used on input line 885.
 (pdftex.def)             Requested size: 254.75371pt x 264.23921pt.
 
-<./rys/noPushExample.png, id=506, 517.18219pt x 458.46281pt>
+<./rys/noPushExample.png, id=579, 517.18219pt x 458.46281pt>
 File: ./rys/noPushExample.png Graphic file (type png)
 
 <use ./rys/noPushExample.png>
-Package pdftex.def Info: ./rys/noPushExample.png used on input line 812.
+Package pdftex.def Info: ./rys/noPushExample.png used on input line 894.
 (pdftex.def)             Requested size: 310.3117pt x 275.0798pt.
 
-<./rys/pushExample.png, id=507, 506.6428pt x 460.72125pt>
+<./rys/pushExample.png, id=580, 506.6428pt x 460.72125pt>
 File: ./rys/pushExample.png Graphic file (type png)
 
 <use ./rys/pushExample.png>
-Package pdftex.def Info: ./rys/pushExample.png used on input line 821.
+Package pdftex.def Info: ./rys/pushExample.png used on input line 903.
 (pdftex.def)             Requested size: 303.98802pt x 276.43488pt.
- <./rys/test4.png, id=509, 572.1375pt x 323.2075pt>
+ <./rys/test4.png, id=582, 572.1375pt x 323.2075pt>
 File: ./rys/test4.png Graphic file (type png)
 
 <use ./rys/test4.png>
-Package pdftex.def Info: ./rys/test4.png used on input line 832.
+Package pdftex.def Info: ./rys/test4.png used on input line 914.
 (pdftex.def)             Requested size: 343.28514pt x 193.926pt.
 
 Underfull \vbox (badness 4013) has occurred while \output is active []
 
- [28 <./rys/noPushExample11.png (PNG copy)>] [29 <./rys/noPushExample.png (PNG 
+ [31 <./rys/noPushExample11.png (PNG copy)>] [32 <./rys/noPushExample.png (PNG 
 copy)>]
-[30 <./rys/pushExample.png (PNG copy)> <./rys/test4.png (PNG copy)>] [31]
+[33 <./rys/pushExample.png (PNG copy)> <./rys/test4.png (PNG copy)>] [34]
 Rozdzia\l  5.
-[32
+[35
 
-] <./rys/medianaTests.png, id=538, 575.14874pt x 317.185pt>
+] <./rys/medianaTests.png, id=610, 575.14874pt x 317.185pt>
 File: ./rys/medianaTests.png Graphic file (type png)
 
 <use ./rys/medianaTests.png>
-Package pdftex.def Info: ./rys/medianaTests.png used on input line 898.
+Package pdftex.def Info: ./rys/medianaTests.png used on input line 980.
 (pdftex.def)             Requested size: 345.0919pt x 190.31245pt.
 
-<./rys/medianaTest4.png, id=539, 569.12625pt x 316.18124pt>
+<./rys/medianaTest4.png, id=611, 569.12625pt x 316.18124pt>
 File: ./rys/medianaTest4.png Graphic file (type png)
 
 <use ./rys/medianaTest4.png>
-Package pdftex.def Info: ./rys/medianaTest4.png used on input line 907.
+Package pdftex.def Info: ./rys/medianaTest4.png used on input line 989.
 (pdftex.def)             Requested size: 341.47838pt x 189.7102pt.
- [33 <./rys/medianaTests.png (PNG copy)>] [34 <./rys/medianaTest4.png (PNG copy
+ [36 <./rys/medianaTests.png (PNG copy)>] [37 <./rys/medianaTest4.png (PNG copy
 )>]
-Underfull \hbox (badness 10000) in paragraph at lines 936--937
+Underfull \hbox (badness 10000) in paragraph at lines 1018--1019
 []$\T1/cmtt/m/n/12 https : / / developers . google . com / web / fundamentals /
  performance /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 940--941
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1023
 \T1/cmr/m/n/12 rozdziaª: []$\T1/cmtt/m/n/12 https : / / hpbn . co / building-[]
 blocks-[]of-[]tcp /
  []
 
-[35
+
+Underfull \hbox (badness 10000) in paragraph at lines 1024--1025
+\T1/cmr/m/n/12 rozdziaª: []$\T1/cmtt/m/n/12 https : / / hpbn . co / http1x / #d
+omain-[]sharding$[]\T1/cmr/m/n/12 , do-st¦p
+ []
+
+[38
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 951.
- [36]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 951.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1033.
+ [39]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1033.
  (./praca_dyplomowa.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 951.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 951.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1033.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1033.
+
 Package rerunfilecheck Info: File `praca_dyplomowa.out' has not changed.
 (rerunfilecheck)             Checksum: 80D9D2686713E340D7F8DBE0F725C162;1521.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 951.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1033.
  ) 
 Here is how much of TeX's memory you used:
- 9623 strings out of 493029
- 135052 string characters out of 6136233
- 280914 words of memory out of 5000000
- 12734 multiletter control sequences out of 15000+600000
+ 9688 strings out of 493029
+ 136084 string characters out of 6136233
+ 298326 words of memory out of 5000000
+ 12748 multiletter control sequences out of 15000+600000
  38717 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,13n,35p,372b,1842s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1182,10 +1223,10 @@ ype1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super
 share/texmf/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/helvetic/uhvr8ac.pfb>
-Output written on praca_dyplomowa.pdf (42 pages, 2753949 bytes).
+Output written on praca_dyplomowa.pdf (47 pages, 3233366 bytes).
 PDF statistics:
- 660 PDF objects out of 1000 (max. 8388607)
- 560 compressed objects within 6 object streams
- 218 named destinations out of 1000 (max. 500000)
- 332 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 742 PDF objects out of 1000 (max. 8388607)
+ 634 compressed objects within 7 object streams
+ 267 named destinations out of 1000 (max. 500000)
+ 342 words of extra memory for PDF output out of 10000 (max. 10000000)
 

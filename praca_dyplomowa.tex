@@ -537,9 +537,36 @@ Na listingu \ref{filter2} widzimy, że zmienna ta jest wykorzystywana do filtrow
 Użytkownik ma możliwość dodania, edycji oraz usunięcia albumu ze swojej listy.
 Aby dodać album wystarczy wprowadzić artystę oraz tytuł albumu i zostanie on automatycznie dodany po kliknięciu przycisku OK.
 PO naciśnięciu przycisku OK wywoływana jest funkcja widoczna na listingu \ref{add1}.
+Jest ona odpowiedzialna za przkazanie informacji dotyczących albumu do serwera, a następnie za odczytanie odpowiedzi serwera i poinformowanie użytkownika czy operacja się udała.
+Funkcja wywoływana po stronie serwera, która jest widoczna na listingu \ref{add2}, tworzy nowy album oraz przypisuje mu konkretne wartości otrzymane od użytkownika i wysyła komunikat o tym, czy operacja się powiodła.
 
-\begin{lstlisting}[caption=Kod odpowiedzialny za dodanie albumu od strony użytkownika, label=add1]
+\begin{lstlisting}[caption=Kod odpowiedzialny za wysłanie zapytania do serwera z prośbą o dodanie albumu, label=add1]
+  $scope.addAlbum = function(newAlbum) {
+    $http.post('/api/album', {'artist': newAlbum.artist,
+                              'title': newAlbum.title})
+      .success(function() {
+        $scope.newAlbum = {};
+        $scope.getAlbums();
+        alert('Dodano album!');
+      }).
+      error(function(err) {
+        console.log(err);
+      });
+  };
+\end{lstlisting}
 
+
+\begin{lstlisting}[caption=Kod odpowiedzialny za dodanie albumu do bazy, label=add2]
+app.post('/api/album', function(req, res) {
+  album = new Album();
+  album.title = req.body.title;
+  album.artist = req.body.artist;
+
+  album.save(function(err) {
+    if (err) res.send(err);
+    res.json({message: 'Album created!'});
+    })
+});
 \end{lstlisting}
 
 O sukcesie operacji zostaniemy poinformowani stosownym komunikatem widocznym na rysunku \ref{aplikacjaAdd}.
@@ -555,16 +582,64 @@ O sukcesie operacji zostaniemy poinformowani stosownym komunikatem widocznym na 
 
 Jak widać na rysunku \ref{aplikacjaAdded} album natychmiast pojawia się na liście.
 
-Użytkownik ma również możliwość edycji oraz usunięcia wybranego albumu. Po najechaniu na wybraną okładkę pojawiają się podstawowe informację o nim oraz ikonki usunięcia oraz edycji wpisu. jest to widoczne na rysunku \ref{aplikacjaEdit}.
 \begin{figure}[!htbp]
 	\begin{center}
 \centering
 \includegraphics[scale=0.4]{\ImgPath/rys/aplikacjaAdded.png}
 \end{center}
-	\caption{Widok aplikacji po udanym wprowadzeniu nazwy oraz wykonawcy albumu}
+	\caption{Widok aplikacji po udanym dodaniu albumu 1985 zespołu Rasmentalism}
 	\label{aplikacjaAdded}
 \end{figure}
 
+Użytkownik ma również możliwość edycji oraz usunięcia wybranego albumu. Po najechaniu na wybraną okładkę pojawiają się podstawowe informację o nim oraz ikonki usunięcia oraz edycji wpisu. jest to widoczne na rysunku \ref{aplikacjaEdit}.
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.3]{\ImgPath/rys/aplikacjaEdit.png}
+\end{center}
+	\caption{Widok szczegółów albumu}
+	\label{aplikacjaEdit}
+\end{figure}
+
+Po kliknięciu na ikonę symbolizującą kosz na śmieci album zostaje usunięty, a aplikacja informuje nas o tym stosownym komunikatem, który widzimy na rysunku \ref{aplikacjaDelete}.
+Album natychmiast znika z listy.
+
+\begin{figure}[!htbp]
+	\begin{center}
+\centering
+\includegraphics[scale=0.4]{\ImgPath/rys/aplikacjaDelete.png}
+\end{center}
+	\caption{Widok po naciśnięciu ikonki kosza na śmieci}
+	\label{aplikacjaDelete}
+\end{figure}
+
+Po naciśnięciu symbolu kosza na śmieci wywoływana jest funkcja odpowiedzialna za usunięcie albumu widoczna na listingu \ref{remove1}. Funkcja przekazuje do serwera numer id albumu, który użytkownik chce usunąć, a następnie oczekuje na wynik działania i zwraca odpowiedni komunikat.
+
+\begin{lstlisting}[caption=Kod odpowiedzialny za przekazania id usuwanego albumu do serwera, label=remove1]
+$scope.deleteAlbum = function(id) {
+  $http.delete('/api/album/' + id)
+    .success(function() {
+      $scope.getAlbums();
+      alert('Usunieto album!');
+    }).
+    error(function(err) {
+      console.log(err);
+    });
+};
+\end{lstlisting}
+
+Po stronie serwera funkcja, widoczna na listingu \ref{remove2}, która otrzymała numer albumu stara się wyszukać odpowiedni wpis bazując na tym numerze. Jeśli uda się znaleźć dany album, to jest on usuwany, a do klienta zwracany jest odpowiedni komunikat.
+\begin{lstlisting}[caption=Kod odpowiedzialny za usunięcie albumu o wybranym id z bazy, label=remove2]
+app.delete('/api/album/:id', function(req, res) {
+  Album.findById(req.params.id, function(err, album) {
+    album.remove(function (err, album) {
+      if(err) res.send(err);
+      res.json({message: 'Album removed! ' + album.id});
+    });
+  });
+});
+\end{lstlisting}
 \section{Przygotowanie testów}
 
 Przed przejściem do porównania prędkości działania obu wersji protokołu chciałem zaprezentować pierwsze efekty implementacji protokołu HTTP/2, które przedstawia rysunek \ref{schematWorkingExample}.
@@ -938,19 +1013,19 @@ Z czasem będą się pojawiać biblioteki, które dużo lepiej zaczną wykorzyst
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
-\bibitem{RFC7540}{M. Belshe, R. Peon, M. Thomson, ,,Hypertext Transfer Protocol Version 2 (HTTP/2)``, 2015.\newline \url{https://tools.ietf.org/html/rfc7540}}
-\bibitem{webpack}{założenia webpack\newline \url{https://webpack.js.org/concepts/}}
-\bibitem{http2Fundamentals}{podstawy HTTP/2\newline \url{https://developers.google.com/web/fundamentals/performance/http2/}}
+\bibitem{RFC7540}{M. Belshe, R. Peon, M. Thomson, ,,Hypertext Transfer Protocol Version 2 (HTTP/2)``, 2015.\newline \url{https://tools.ietf.org/html/rfc7540}}, dostęp 29.01.2017
+\bibitem{webpack}{założenia webpack\newline \url{https://webpack.js.org/concepts/}}, dostęp 29.01.2017
+\bibitem{http2Fundamentals}{podstawy HTTP/2\newline \url{https://developers.google.com/web/fundamentals/performance/http2/}}, dostęp 29.01.2017
 \bibitem{mean}{Haviv A., ,,MEAN Web Development'', Birmingham 2014, ISBN 978-1-78398-328-5}
 \bibitem{connectionMng}{Totty B., Sayer M., Reddy S., Aggarwal A., Gourley D., ,,HTTP: The Definitive Guide``, 2002, rozdział 4}
-\bibitem{RFC2616}{R. Fielding, J. Gettys, J. Mogul, H. Frystyk, L. Masinter, P. Leach, T. Berners-Lee, ,,Hypertext Transfer Protocol -- HTTP/1.1``, 1999.\newline \url{https://tools.ietf.org/html/rfc2616}}
-\bibitem{hol}{I. Grigorik, ,,High Performance Browser Neworking``, 2013\newline rozdział: \url{https://hpbn.co/building-blocks-of-tcp/#head-of-line-blocking}}
-\bibitem{sprites}{R. Rendle, ,,Spriting with <img>``, 2015.\newline \url{https://css-tricks.com/spriting-img/}}
-\bibitem{domainSharding}{I. Grigorik, ,,High Performance Browser Neworking``, 2013\newline rozdział: \url{https://hpbn.co/http1x/#domain-sharding}}
-\bibitem{hpack}{R. Peon, H. Ruellan, ,,HPACK: Header Compression for HTTP/2``, 2015.\newline \url{https://tools.ietf.org/html/rfc7541}}
-\bibitem{spdy}{\url{https://github.com/indutny/node-spdy}}
-\bibitem{devtools}{\url{https://developer.chrome.com/devtools}}
-\bibitem{nodeHttp2Impl}{\url{https://github.com/nodejs/http2}}
+\bibitem{RFC2616}{R. Fielding, J. Gettys, J. Mogul, H. Frystyk, L. Masinter, P. Leach, T. Berners-Lee, ,,Hypertext Transfer Protocol -- HTTP/1.1``, 1999.\newline \url{https://tools.ietf.org/html/rfc2616}}, dostęp 29.01.2017
+\bibitem{hol}{I. Grigorik, ,,High Performance Browser Neworking``, 2013\newline rozdział: \url{https://hpbn.co/building-blocks-of-tcp/#head-of-line-blocking}}, dostęp 29.01.2017
+\bibitem{sprites}{R. Rendle, ,,Spriting with <img>``, 2015.\newline \url{https://css-tricks.com/spriting-img/}}, dostęp 29.01.2017
+\bibitem{domainSharding}{I. Grigorik, ,,High Performance Browser Neworking``, 2013\newline rozdział: \url{https://hpbn.co/http1x/#domain-sharding}}, dostęp 29.01.2017
+\bibitem{hpack}{R. Peon, H. Ruellan, ,,HPACK: Header Compression for HTTP/2``, 2015.\newline \url{https://tools.ietf.org/html/rfc7541}}, dostęp 29.01.2017
+\bibitem{spdy}{repozytorium projektu implementującego HTTP/2 dla Node.js\newline \url{https://github.com/indutny/node-spdy}}, dostęp 29.01.2017
+\bibitem{devtools}{opis Chrome Developer Tools\newline \url{https://developer.chrome.com/devtools}}, dostęp 29.01.2017
+\bibitem{nodeHttp2Impl}{repozytorium oficjalnej implementacji HTTP/2 dla Node.js\newline \url{https://github.com/nodejs/http2}}, dostęp 29.01.2017
 \end{thebibliography}
 
 %\zakonczenie  % wklejenie recenzji i opinii

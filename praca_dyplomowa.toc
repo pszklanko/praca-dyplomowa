@@ -13,11 +13,11 @@
 \contentsline {chapter}{\numberline {4}Testy}{14}{chapter.4}
 \contentsline {section}{\numberline {4.1}Chrome DevTools}{14}{section.4.1}
 \contentsline {section}{\numberline {4.2}\IeC {\'S}rodowisko testowe}{16}{section.4.2}
-\contentsline {section}{\numberline {4.3}Przygotowanie test\IeC {\'o}w}{18}{section.4.3}
-\contentsline {section}{\numberline {4.4}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci protoko\IeC {\l }u HTTP/2 i HTTP/1.1}{21}{section.4.4}
-\contentsline {section}{\numberline {4.5}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy bezpiecznym po\IeC {\l }\IeC {\k a}czeniu HTTP/1.1}{22}{section.4.5}
-\contentsline {section}{\numberline {4.6}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci z w\IeC {\l }\IeC {\k a}czonym CACHE}{25}{section.4.6}
-\contentsline {section}{\numberline {4.7}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy wykorzystaniu Server Push}{25}{section.4.7}
-\contentsline {section}{\numberline {4.8}Kompatybilno\IeC {\'s}\IeC {\'c} popularnych przegl\IeC {\k a}darek internetowych z HTTP/2}{31}{section.4.8}
-\contentsline {chapter}{\numberline {5}Wnioski}{32}{chapter.5}
-\contentsline {chapter}{Bibliografia}{35}{chapter*.4}
+\contentsline {section}{\numberline {4.3}Przygotowanie test\IeC {\'o}w}{22}{section.4.3}
+\contentsline {section}{\numberline {4.4}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci protoko\IeC {\l }u HTTP/2 i HTTP/1.1}{24}{section.4.4}
+\contentsline {section}{\numberline {4.5}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy bezpiecznym po\IeC {\l }\IeC {\k a}czeniu HTTP/1.1}{27}{section.4.5}
+\contentsline {section}{\numberline {4.6}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci z w\IeC {\l }\IeC {\k a}czonym CACHE}{28}{section.4.6}
+\contentsline {section}{\numberline {4.7}Por\IeC {\'o}wnanie pr\IeC {\k e}dko\IeC {\'s}ci przy wykorzystaniu Server Push}{28}{section.4.7}
+\contentsline {section}{\numberline {4.8}Kompatybilno\IeC {\'s}\IeC {\'c} popularnych przegl\IeC {\k a}darek internetowych z HTTP/2}{34}{section.4.8}
+\contentsline {chapter}{\numberline {5}Wnioski}{35}{chapter.5}
+\contentsline {chapter}{Bibliografia}{38}{chapter*.4}
